@@ -10,15 +10,15 @@ interface Props {
 const { project, showImage = true, showFullDescription = false } = Astro.props;
 ---
 
-<article class="group bg-white hover:shadow-sm border border-slate-200 hover:border-slate-300 rounded-lg h-full overflow-hidden transition-all duration-200">
+<article class="group bg-white hover:shadow-lg border border-slate-200 hover:border-slate-300 rounded-lg h-full overflow-hidden transition-all hover:-translate-y-1 duration-300">
   <div class="p-5">
     {
       showImage && project.data.image && (
-        <div class="relative mb-4 rounded aspect-video overflow-hidden">
+        <div class="relative bg-slate-50 mb-4 rounded-lg aspect-video overflow-hidden">
           <img
             src={project.data.image}
             alt={project.data.name}
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             transition:name={`project-image-${project.id}`}
           />
         </div>

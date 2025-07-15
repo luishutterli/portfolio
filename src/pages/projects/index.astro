@@ -22,30 +22,38 @@ const sortedProjects = projects.sort(
 ---
 
 <Layout title="Projekte">
-  <main class="min-h-screen">
+  <div class="min-h-screen">
     <!-- Hero Section -->
-    <section class="px-4 lg:px-6 pt-8 pb-4">
+    <section class="bg-gradient-to-br from-slate-50 to-slate-100 px-4 lg:px-6 pt-16 pb-8">
       <div class="mx-auto max-w-6xl">
-        <div class="mb-6 text-center">
-          <h1 class="mb-2 font-medium text-slate-900 text-2xl lg:text-3xl" transition:name="page-title">
-            Projekte
+        <div class="mb-8 text-center">
+          <h1 class="mb-4 font-bold text-slate-900 text-3xl lg:text-4xl" transition:name="page-title">
+            Alle Projekte
           </h1>
-          <p class="mx-auto max-w-xl text-slate-600 text-sm">
-            Eine Auswahl meiner neuesten Arbeiten und Projekte
+          <p class="mx-auto max-w-2xl text-slate-600 text-lg">
+            Eine Übersicht über meine Arbeiten, von aktuellen Projekten bis hin zu abgeschlossenen Arbeiten
           </p>
         </div>
       </div>
     </section>
 
     <!-- Projects Grid -->
-    <section class="px-4 lg:px-6 pb-12">
+    <section class="px-4 lg:px-6 py-16">
       <div class="mx-auto max-w-6xl">
-        <div class="gap-4 lg:gap-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div class="gap-6 lg:gap-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {sortedProjects.map((project: CollectionEntry<"projects">) => (
-            <ProjectCard project={project} />
+            <div class="group hover:scale-105 transition-transform duration-300">
+              <ProjectCard project={project} />
+            </div>
           ))}
         </div>
+        
+        {sortedProjects.length === 0 && (
+          <div class="py-12 text-center">
+            <p class="text-slate-500 text-lg">Noch keine Projekte verfügbar.</p>
+          </div>
+        )}
       </div>
     </section>
-  </main>
+  </div>
 </Layout>

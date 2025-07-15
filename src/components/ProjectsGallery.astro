@@ -1,0 +1,73 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = await getCollection("projects");
+
+// Sort projects: featured first, then by state (Fertig first), then by start date
+const sortedProjects = projects.sort(
+  (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) => {
+    if (a.data.featured && !b.data.featured) return -1;
+    if (!a.data.featured && b.data.featured) return 1;
+
+    if (a.data.state === "Fertig" && b.data.state === "In Arbeit") return -1;
+    if (a.data.state === "In Arbeit" && b.data.state === "Fertig") return 1;
+
+    const aDate = a.data.startDate || new Date(0);
+    const bDate = b.data.startDate || new Date(0);
+    return bDate.getTime() - aDate.getTime();
+  },
+);
+
+const featuredProjects = sortedProjects.slice(0, 6);
+---
+
+<section class="bg-slate-50 px-4 lg:px-6 py-16">
+  <div class="mx-auto max-w-6xl">
+    <!-- Section Header -->
+    <div class="mb-12 text-center">
+      <h2 
+        class="mb-4 font-bold text-slate-900 text-3xl lg:text-4xl"
+        transition:name="projects-heading"
+      >
+        Meine Projekte
+      </h2>
+      <p class="mx-auto max-w-2xl text-slate-600 text-lg leading-relaxed">
+        Eine Auswahl meiner neuesten Arbeiten und Projekte. Von Full-Stack Entwicklung bis hin zu innovativen Lösungen.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="gap-6 lg:gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12">
+      {featuredProjects.map((project: CollectionEntry<"projects">) => (
+        <div class="group hover:scale-105 transition-transform duration-300">
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+
+    <!-- View All Link -->
+    <div class="text-center">
+      <a 
+        href="/projects" 
+        class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 px-6 py-3 rounded-lg font-medium text-white transition-colors duration-200"
+        transition:name="view-all-projects"
+      >
+        Alle Projekte ansehen
+        <svg 
+          class="w-5 h-5" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M13 7l5 5m0 0l-5 5m5-5H6"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

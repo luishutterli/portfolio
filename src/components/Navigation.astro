@@ -1,0 +1,40 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="top-0 z-50 sticky bg-white/95 backdrop-blur-sm border-slate-200 border-b">
+  <div class="mx-auto px-4 lg:px-6 max-w-6xl">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo/Brand -->
+      <a 
+        href="/" 
+        class="font-bold text-slate-900 hover:text-slate-600 text-xl transition-colors"
+        transition:name="nav-logo"
+      >
+        Luis Hutterli
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="flex items-center space-x-8">
+        <a 
+          href="/" 
+          class={`text-sm font-medium transition-colors hover:text-slate-600 ${
+            currentPath === '/' ? 'text-slate-900' : 'text-slate-600'
+          }`}
+          transition:name="nav-home"
+        >
+          Home
+        </a>
+        <a 
+          href="/projects" 
+          class={`text-sm font-medium transition-colors hover:text-slate-600 ${
+            currentPath.startsWith('/projects') ? 'text-slate-900' : 'text-slate-600'
+          }`}
+          transition:name="nav-projects"
+        >
+          Projekte
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
