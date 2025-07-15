@@ -20,6 +20,7 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
           src={project.data.image}
           alt={project.data.name}
           class="mb-3 rounded-lg w-full h-45 object-cover"
+          transition:name={`project-image-${project.id}`}
         />
       )
     }
@@ -28,6 +29,7 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
         <a
           href={`/projects/${project.id}`}
           class="text-blue-700 hover:text-blue-800 no-underline transition-colors duration-200"
+          transition:name={`project-title-${project.id}`}
         >
           {project.data.name}
         </a>
