@@ -1,0 +1,83 @@
+---
+import { type CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+  showImage?: boolean;
+  showFullDescription?: boolean;
+}
+
+const { project, showImage = true, showFullDescription = false } = Astro.props;
+---
+
+<article
+  class="flex flex-col bg-white hover:shadow-lg p-4 border border-slate-200 hover:border-slate-300 rounded-xl h-full transition-all hover:-translate-y-0.5 duration-200 ease-in-out"
+>
+  <div class="mb-3">
+    {
+      showImage && project.data.image && (
+        <img
+          src={project.data.image}
+          alt={project.data.name}
+          class="mb-3 rounded-lg w-full h-45 object-cover"
+        />
+      )
+    }
+    <div class="flex justify-between items-start gap-3 mb-1">
+      <h3 class="m-0 font-semibold text-xl">
+        <a
+          href={`/projects/${project.id}`}
+          class="text-blue-700 hover:text-blue-800 no-underline transition-colors duration-200"
+        >
+          {project.data.name}
+        </a>
+      </h3>
+      <div class="flex flex-shrink-0 gap-2">
+        <span
+          class={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
+            project.data.state === "Fertig"
+              ? "bg-green-100 text-green-800"
+              : "bg-amber-100 text-amber-800"
+          }`}
+        >
+          {project.data.state}
+        </span>
+        {
+          project.data.featured && (
+            <span class="bg-blue-100 px-3 py-1 rounded-full font-semibold text-blue-700 text-xs">
+              Featured
+            </span>
+          )
+        }
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {
+        project.data.tags.map((tag: string) => (
+          <span class="bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded-md font-medium text-slate-600 text-xs transition-colors duration-200 cursor-pointer">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <p class="flex-grow mb-3 text-slate-500 leading-relaxed">
+    {
+      showFullDescription
+        ? project.data.description
+        : project.data.description.length > 200
+          ? project.data.description.substring(0, 200) + "..."
+          : project.data.description
+    }
+  </p>
+
+  <div class="flex flex-wrap gap-3 mt-auto">
+    <a
+      href={`/projects/${project.id}`}
+      class="bg-blue-700 hover:bg-blue-800 ml-auto sm:ml-0 px-4 py-2 rounded-md font-medium text-white text-sm no-underline transition-all duration-200"
+    >
+      Details →
+    </a>
+  </div>
+</article>

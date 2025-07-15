@@ -1,0 +1,37 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const projects = await getCollection("projects");
+
+// Sort projects: featured first, then by state (Fertig first), then by start date
+const sortedProjects = projects.sort(
+  (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) => {
+    if (a.data.featured && !b.data.featured) return -1;
+    if (!a.data.featured && b.data.featured) return 1;
+
+    if (a.data.state === "Fertig" && b.data.state === "In Arbeit") return -1;
+    if (a.data.state === "In Arbeit" && b.data.state === "Fertig") return 1;
+
+    const aDate = a.data.startDate || new Date(0);
+    const bDate = b.data.startDate || new Date(0);
+    return bDate.getTime() - aDate.getTime();
+  },
+);
+---
+
+<Layout title="Projekte">
+  <main>
+    <div class="mx-auto px-8 md:px-4 max-w-7xl">
+      <h1 class="mb-2 font-bold text-slate-800 md:text-2xl text-4xl">Meine Projekte</h1>
+      <p class="text-slate-600">Eine Übersicht über meine aktuellen und abgeschlossenen Projekte.</p>
+      
+      <div class="gap-8 md:gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(auto-fit,minmax(350px,1fr))] mt-12">
+        {sortedProjects.map((project: CollectionEntry<"projects">) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>
