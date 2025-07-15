@@ -22,16 +22,30 @@ const sortedProjects = projects.sort(
 ---
 
 <Layout title="Projekte">
-  <main>
-    <div class="mx-auto px-8 md:px-4 max-w-7xl">
-      <h1 class="mb-2 font-bold text-slate-800 md:text-2xl text-4xl" transition:name="page-title">Meine Projekte</h1>
-      <p class="text-slate-600">Eine Übersicht über meine aktuellen und abgeschlossenen Projekte.</p>
-      
-      <div class="gap-8 md:gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(auto-fit,minmax(350px,1fr))] mt-12">
-        {sortedProjects.map((project: CollectionEntry<"projects">) => (
-          <ProjectCard project={project} />
-        ))}
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="px-4 lg:px-6 pt-8 pb-4">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-6 text-center">
+          <h1 class="mb-2 font-medium text-slate-900 text-2xl lg:text-3xl" transition:name="page-title">
+            Projekte
+          </h1>
+          <p class="mx-auto max-w-xl text-slate-600 text-sm">
+            Eine Auswahl meiner neuesten Arbeiten und Projekte
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="px-4 lg:px-6 pb-12">
+      <div class="mx-auto max-w-6xl">
+        <div class="gap-4 lg:gap-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          {sortedProjects.map((project: CollectionEntry<"projects">) => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
