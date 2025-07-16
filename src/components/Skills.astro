@@ -1,0 +1,178 @@
+---
+import { skillsData, additionalTechnologies } from "../data/skills.ts";
+---
+
+<section class="bg-white py-12">
+  <div class="mx-auto px-4 lg:px-6 max-w-6xl">
+
+    <div class="mb-10 text-center">
+      <h2 class="mb-3 font-bold text-slate-900 text-2xl lg:text-3xl">
+        Technische Fähigkeiten
+      </h2>
+      <p class="mx-auto max-w-2xl text-neutral text-base leading-relaxed">
+        Eine Übersicht über die Technologien und Tools, mit denen ich täglich arbeite und meine Projekte entwickle.
+      </p>
+    </div>
+
+
+    <div class="gap-6 grid grid-cols-1 lg:grid-cols-2">
+      {Object.entries(skillsData).map(([key, category]) => (
+        <div class="group bg-gradient-to-br from-white to-background-light hover:shadow-xl p-4 border border-neutral-light/30 hover:border-primary/30 rounded-2xl transition-all hover:-translate-y-2 duration-300">
+
+          <div class="flex items-center gap-3 mb-4">
+            <div class="bg-gradient-to-br from-primary/10 to-secondary/10 p-2.5 rounded-xl group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={category.icon}/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900 text-lg">{category.title}</h3>
+          </div>
+
+
+          <div class="space-y-2">
+            {category.technologies.map((tech) => (
+              <div class="skill-item">
+                <div class="flex justify-between items-center mb-1.5">
+                  <span class="font-medium text-slate-800 text-sm">{tech.name}</span>
+                  <span class="text-neutral text-sm">{tech.level}%</span>
+                </div>
+                
+
+                <div class="relative bg-slate-200 rounded-full h-2 overflow-hidden">
+                  <div 
+                    class={`absolute left-0 top-0 bg-gradient-to-r ${tech.color} rounded-full h-full transition-all duration-1000 ease-out skill-progress`}
+                    style={`width: ${tech.level}%`}
+                  >
+
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+
+  <div class="mx-auto px-4 lg:px-6 py-6 max-w-6xl">
+    <div class="mb-8 text-center">
+      <p class="mx-auto max-w-2xl text-neutral text-base">
+        Weitere Technologien und Tools, die ich in verschiedenen Projekten einsetze:
+      </p>
+    </div>
+    
+
+    <div class="gap-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mx-auto max-w-6xl">
+      {additionalTechnologies.map((tech, index) => (
+        <div 
+          class={`tech-tag relative ${tech.tooltip ? "group cursor-help" : ""}`}
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          <span class="inline-block relative bg-gradient-to-r from-slate-100 hover:from-primary/10 to-slate-200 hover:to-secondary/10 hover:shadow-md px-3 py-1.5 border border-slate-300 hover:border-primary/30 rounded-lg w-full font-medium text-slate-700 hover:text-primary text-sm text-center hover:scale-105 transition-all duration-300 transform">
+            {tech.name}
+            {tech.tooltip && (
+              <span class="-top-1 -right-1 absolute bg-primary opacity-60 rounded-full w-2 h-2 animate-pulse"></span>
+            )}
+          </span>
+          
+
+          {tech.tooltip && (
+            <div class="bottom-full left-1/2 z-10 absolute opacity-0 group-hover:opacity-100 mb-3 transition-opacity -translate-x-1/2 duration-300 pointer-events-none tooltip transform">
+              <div class="bg-slate-800 shadow-lg px-3 py-2 rounded-lg text-white text-sm">
+                {tech.tooltip}
+                <div class="top-full left-1/2 absolute -translate-x-1/2 tooltip-arrow transform">
+                  <div class="border-t-4 border-t-slate-800 border-r-4 border-r-transparent border-l-4 border-l-transparent"></div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+    <div class="mt-1 text-center">
+      <p class="mx-auto max-w-2xl text-neutral text-lg">
+        ... und noch viele mehr!
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+  
+  .skill-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .skill-item:nth-child(1) { animation-delay: 0.1s; }
+  .skill-item:nth-child(2) { animation-delay: 0.2s; }
+  .skill-item:nth-child(3) { animation-delay: 0.3s; }
+  .skill-item:nth-child(4) { animation-delay: 0.4s; }
+  .skill-item:nth-child(5) { animation-delay: 0.5s; }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .skill-progress {
+    transition: all 0.3s ease;
+  }
+  
+  .group:hover .skill-progress {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  .tech-tag {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .tooltip {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  .tooltip .bg-slate-800 {
+    white-space: normal;
+    max-width: 14rem;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .tooltip .bg-slate-800 {
+      max-width: 10rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tooltip .bg-slate-800 {
+      max-width: 8rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .tech-tag span {
+      font-size: 0.75rem;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+</style>

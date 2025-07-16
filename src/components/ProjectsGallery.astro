@@ -22,23 +22,23 @@ const sortedProjects = projects.sort(
 const featuredProjects = sortedProjects.slice(0, 6);
 ---
 
-<section class="bg-slate-50 px-4 lg:px-6 py-16">
+<section class="bg-background-light px-4 lg:px-6 py-10">
   <div class="mx-auto max-w-6xl">
-    <!-- Section Header -->
-    <div class="mb-12 text-center">
+
+    <div class="mb-8 text-center">
       <h2 
-        class="mb-4 font-bold text-slate-900 text-3xl lg:text-4xl"
+        class="mb-3 font-bold text-slate-900 text-2xl lg:text-3xl"
         transition:name="projects-heading"
       >
         Meine Projekte
       </h2>
-      <p class="mx-auto max-w-2xl text-slate-600 text-lg leading-relaxed">
+      <p class="mx-auto max-w-2xl text-neutral text-base leading-relaxed">
         Eine Auswahl meiner neuesten Arbeiten und Projekte. Von Full-Stack Entwicklung bis hin zu innovativen Lösungen.
       </p>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="gap-6 lg:gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12">
+
+    <div class="gap-6 lg:gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
       {featuredProjects.map((project: CollectionEntry<"projects">) => (
         <div class="group hover:scale-105 transition-transform duration-300">
           <ProjectCard project={project} />
@@ -46,16 +46,16 @@ const featuredProjects = sortedProjects.slice(0, 6);
       ))}
     </div>
 
-    <!-- View All Link -->
+
     <div class="text-center">
       <a 
         href="/projects" 
-        class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 px-6 py-3 rounded-lg font-medium text-white transition-colors duration-200"
+        class="inline-flex items-center gap-2 bg-gradient-to-r from-neutral-dark hover:from-neutral-darker to-primary hover:to-primary-hover hover:shadow-primary/20 hover:shadow-xl px-8 py-4 rounded-xl font-semibold text-white hover:scale-105 transition-all duration-300 transform"
         transition:name="view-all-projects"
       >
         Alle Projekte ansehen
         <svg 
-          class="w-5 h-5" 
+          class="w-5 h-5 transition-transform group-hover:translate-x-1 duration-300" 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"

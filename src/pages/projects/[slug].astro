@@ -21,7 +21,7 @@ const { Content } = await render(project);
 
 <Layout title={project.data.name}>
   <main>
-    <!-- Hero Section -->
+
     <section class="px-4 lg:px-6 pt-8">
       <div class="mx-auto max-w-4xl">
         <div class="mb-8">
@@ -39,20 +39,20 @@ const { Content } = await render(project);
           <h1 class="mb-3 font-medium text-slate-900 text-3xl lg:text-4xl" transition:name={`project-title-${project.id}`}>
             {project.data.name}
           </h1>
-          <p class="mb-5 text-slate-600 text-base">
+          <p class="mb-5 text-neutral text-base">
             {project.data.description}
           </p>
           
           <div class="flex flex-wrap items-center gap-2 mb-6">
             <span class={`px-3 py-1.5 rounded text-sm ${
               project.data.state === "Fertig" 
-                ? "bg-green-100 text-green-800" 
-                : "bg-yellow-100 text-yellow-800"
+                ? "bg-secondary/10 text-secondary-hover" 
+                : "bg-accent/10 text-accent"
             }`}>
               {project.data.state}
             </span>
             {project.data.featured && (
-              <span class="bg-blue-100 px-3 py-1.5 rounded text-blue-800 text-sm">
+              <span class="bg-primary/10 px-3 py-1.5 rounded font-medium text-primary text-sm">
                 ★ Featured
               </span>
             )}
@@ -61,22 +61,22 @@ const { Content } = await render(project);
       </div>
     </section>
 
-    <!-- Content Section -->
-    <section class="bg-slate-50 px-4 lg:px-6 py-4">
+
+    <section class="bg-background-light px-4 lg:px-6 py-4">
       <div class="mx-auto max-w-4xl">
-        <!-- Technology Tags -->
+
         <div class="mb-8">
           <h2 class="mb-4 font-medium text-slate-900 text-xl">Technologien</h2>
           <div class="flex flex-wrap gap-2">
             {project.data.tags.map((tag: string) => (
-              <span class="bg-white px-3 py-1.5 border border-slate-200 rounded text-slate-700 text-sm">
+              <span class="bg-white px-3 py-1.5 border border-neutral-light/30 hover:border-primary/30 rounded text-neutral-dark hover:text-primary text-sm transition-colors duration-200">
                 {tag}
               </span>
             ))}
           </div>
         </div>
 
-        <!-- Links -->
+
         <div class="mb-8">
           <h2 class="mb-4 font-medium text-slate-900 text-xl">Links</h2>
           <div class="flex flex-wrap gap-3">
@@ -85,7 +85,7 @@ const { Content } = await render(project);
                 href={project.data.github} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 px-4 py-2.5 rounded font-medium text-white text-sm"
+                class="inline-flex items-center gap-2 bg-neutral-darker hover:bg-slate-800 px-4 py-2.5 rounded font-medium text-white text-sm transition-colors duration-200"
               >
                 GitHub
               </a>
@@ -95,7 +95,7 @@ const { Content } = await render(project);
                 href={link.url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-2.5 rounded font-medium text-white text-sm"
+                class="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover px-4 py-2.5 rounded font-medium text-white text-sm transition-colors duration-200"
               >
                 {link.title}
               </a>
@@ -103,11 +103,11 @@ const { Content } = await render(project);
           </div>
         </div>
 
-        <!-- Timeline -->
+
         {(project.data.startDate || project.data.endDate) && (
           <div class="mb-8">
             <h2 class="mb-4 font-medium text-slate-900 text-xl">Timeline</h2>
-            <div class="flex lg:flex-row flex-col gap-3 text-slate-600 text-sm">
+            <div class="flex lg:flex-row flex-col gap-3 text-neutral text-sm">
               {project.data.startDate && (
                 <div class="flex items-center gap-2">
                   <span class="font-medium">Gestartet:</span>
@@ -126,7 +126,7 @@ const { Content } = await render(project);
       </div>
     </section>
 
-    <!-- Project Content -->
+
     <section class="px-4 lg:px-6 py-8">
       <div class="mx-auto max-w-4xl">
         <div class="max-w-none prose prose-slate">
@@ -135,14 +135,17 @@ const { Content } = await render(project);
       </div>
     </section>
 
-    <!-- Navigation -->
-    <section class="px-4 lg:px-6 py-6 border-slate-200 border-t">
+
+    <section class="px-4 lg:px-6 py-6 border-neutral-light/30 border-t">
       <div class="mx-auto max-w-4xl">
         <a 
           href="/projects" 
-          class="font-medium text-slate-600 hover:text-slate-900 text-sm"
+          class="inline-flex items-center gap-2 font-medium text-primary hover:text-primary-hover text-sm transition-colors duration-200"
         >
-          ← Zurück zu allen Projekten
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Zurück zu allen Projekten
         </a>
       </div>
     </section>

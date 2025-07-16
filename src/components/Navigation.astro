@@ -2,39 +2,64 @@
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="top-0 z-50 sticky bg-white/95 backdrop-blur-sm border-slate-200 border-b">
+<nav class="top-0 z-50 sticky bg-gradient-to-r from-white/95 via-background-light/95 to-white/95 shadow-sm backdrop-blur-md border-neutral-light/50 border-b">
   <div class="mx-auto px-4 lg:px-6 max-w-6xl">
     <div class="flex justify-between items-center h-16">
-      <!-- Logo/Brand -->
+
       <a 
         href="/" 
-        class="font-bold text-slate-900 hover:text-slate-600 text-xl transition-colors"
+        class="group relative font-bold text-slate-900 hover:text-primary text-xl hover:scale-105 transition-all duration-300 transform"
         transition:name="nav-logo"
       >
-        Luis Hutterli
+        <span class="z-10 relative">Luis Hutterli</span>
+        <div class="-z-10 absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
       </a>
 
-      <!-- Navigation Links -->
-      <div class="flex items-center space-x-8">
+
+      <div class="flex items-center space-x-1">
         <a 
           href="/" 
-          class={`text-sm font-medium transition-colors hover:text-slate-600 ${
-            currentPath === '/' ? 'text-slate-900' : 'text-slate-600'
+          class={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+            currentPath === "/" 
+              ? "text-primary-hover bg-background-blue/80" 
+              : "text-slate-600 hover:text-primary hover:bg-background-blue/50"
           }`}
           transition:name="nav-home"
         >
-          Home
+          <span class="z-10 relative">Home</span>
+          {currentPath === "/" && (
+            <div class="bottom-0 left-1/2 absolute bg-primary rounded-full w-1 h-1 -translate-x-1/2 animate-bounce transform"></div>
+          )}
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/0 group-hover:from-primary/5 to-secondary/0 group-hover:to-secondary/5 rounded-lg transition-all duration-300"></div>
         </a>
         <a 
           href="/projects" 
-          class={`text-sm font-medium transition-colors hover:text-slate-600 ${
-            currentPath.startsWith('/projects') ? 'text-slate-900' : 'text-slate-600'
+          class={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+            currentPath.startsWith("/projects") 
+              ? "text-primary-hover bg-background-blue/80" 
+              : "text-slate-600 hover:text-primary hover:bg-background-blue/50"
           }`}
           transition:name="nav-projects"
         >
-          Projekte
+          <span class="z-10 relative">Projekte</span>
+          {currentPath.startsWith("/projects") && (
+            <div class="bottom-0 left-1/2 absolute bg-primary rounded-full w-1 h-1 -translate-x-1/2 animate-bounce transform"></div>
+          )}
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/0 group-hover:from-primary/5 to-secondary/0 group-hover:to-secondary/5 rounded-lg transition-all duration-300"></div>
         </a>
       </div>
     </div>
   </div>
 </nav>
+
+<style>
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+</style>

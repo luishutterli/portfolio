@@ -10,11 +10,11 @@ interface Props {
 const { project, showImage = true, showFullDescription = false } = Astro.props;
 ---
 
-<article class="group bg-white hover:shadow-lg border border-slate-200 hover:border-slate-300 rounded-lg h-full overflow-hidden transition-all hover:-translate-y-1 duration-300">
-  <div class="p-5">
+<article class="group bg-white hover:shadow-xl border border-neutral-light/50 hover:border-primary/30 rounded-lg h-full overflow-hidden transition-all hover:-translate-y-2 duration-300">
+  <div class="p-4">
     {
       showImage && project.data.image && (
-        <div class="relative bg-slate-50 mb-4 rounded-lg aspect-video overflow-hidden">
+        <div class="relative bg-background-light mb-3 rounded-lg aspect-video overflow-hidden">
           <img
             src={project.data.image}
             alt={project.data.name}
@@ -25,13 +25,13 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
       )
     }
     
-    <!-- Header -->
-    <div class="mb-3">
+
+    <div class="mb-2">
       <div class="flex justify-between items-start gap-3 mb-2">
         <h3 class="font-medium text-slate-900 text-lg leading-tight">
           <a
             href={`/projects/${project.id}`}
-            class="text-slate-900 hover:text-slate-600 no-underline"
+            class="text-slate-900 hover:text-primary no-underline transition-colors duration-200"
             transition:name={`project-title-${project.id}`}
           >
             {project.data.name}
@@ -42,15 +42,15 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
           <span
             class={`px-2 py-1 rounded text-xs ${
               project.data.state === "Fertig"
-                ? "bg-green-100 text-green-800"
-                : "bg-yellow-100 text-yellow-800"
+                ? "bg-secondary/10 text-secondary-hover"
+                : "bg-accent/10 text-accent"
             }`}
           >
             {project.data.state}
           </span>
           {
             project.data.featured && (
-              <span class="bg-blue-100 px-2 py-1 rounded text-blue-800 text-xs">
+              <span class="bg-primary/10 px-2 py-1 rounded font-medium text-primary text-xs">
                 ★
               </span>
             )
@@ -58,25 +58,25 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
         </div>
       </div>
       
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-1.5 mb-3">
+
+      <div class="flex flex-wrap gap-1.5 mb-2">
         {
           project.data.tags.slice(0, 4).map((tag: string) => (
-            <span class="bg-slate-100 px-2 py-1 rounded text-slate-600 text-xs">
+            <span class="bg-background-light px-2 py-1 border border-neutral-light/30 rounded text-neutral text-xs">
               {tag}
             </span>
           ))
         }
         {project.data.tags.length > 4 && (
-          <span class="bg-slate-100 px-2 py-1 rounded text-slate-500 text-xs">
+          <span class="bg-background-light px-2 py-1 border border-neutral-light/30 rounded text-neutral-light text-xs">
             +{project.data.tags.length - 4}
           </span>
         )}
       </div>
     </div>
 
-    <!-- Description -->
-    <p class="mb-4 text-slate-600 text-sm leading-relaxed">
+
+    <p class="mb-3 text-neutral text-sm leading-relaxed">
       {
         showFullDescription
           ? project.data.description
@@ -86,13 +86,16 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
       }
     </p>
 
-    <!-- Action -->
+
     <div class="flex justify-between items-center">
       <a
         href={`/projects/${project.id}`}
-        class="font-medium text-slate-900 hover:text-slate-600 text-sm"
+        class="inline-flex items-center gap-1 font-medium text-primary hover:text-primary-hover text-sm transition-colors group-hover:translate-x-1 duration-200 transform"
       >
-        Details ansehen →
+        Details ansehen 
+        <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
       </a>
     </div>
   </div>

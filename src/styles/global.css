@@ -1,2 +1,47 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-primary: var(--color-blue-500);
+  --color-primary-hover: var(--color-blue-600);
+  --color-primary-light: var(--color-blue-400);
+  --color-secondary: var(--color-teal-500);
+  --color-secondary-hover: var(--color-teal-600);
+  --color-secondary-light: var(--color-teal-400);
+  --color-accent: var(--color-cyan-500);
+  --color-accent-light: var(--color-cyan-400);
+  --color-neutral: var(--color-slate-500);
+  --color-neutral-dark: var(--color-slate-600);
+  --color-neutral-darker: var(--color-slate-700);
+  --color-neutral-light: var(--color-slate-400);
+  --color-background-light: var(--color-slate-50);
+  --color-background-blue: var(--color-blue-50);
+  --color-background-cyan: var(--color-cyan-50);
+}
+
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+.animate-float-subtle {
+  animation: float-subtle 6s ease-in-out infinite;
+}
