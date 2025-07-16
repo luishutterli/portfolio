@@ -2,7 +2,7 @@
 name: "Portfolio Website"
 description: "Eine moderne Portfolio-Website gebaut mit Astro v5, TypeScript und Tailwind CSS. Zeigt meine Projekte und Fähigkeiten."
 image: "/images/portfolio/portfolio-cover.png"
-tags: ["Astro", "TypeScript", "Tailwind CSS", "Content Collections"]
+tags: ["Astro", "TypeScript", "Tailwind CSS", "Content Collections", "Markdown", "SEO"]
 state: "In Arbeit"
 github: "https://github.com/luishutterli/portfolio"
 links:

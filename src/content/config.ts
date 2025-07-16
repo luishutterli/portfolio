@@ -7,7 +7,7 @@ const projects = defineCollection({
     name: z.string(),
     description: z.string(),
     image: z.string().optional(),
-    tags: z.array(z.string()),
+    tags: z.array(z.string()).optional().default([]),
     state: z.enum(["Fertig", "In Arbeit"]),
     github: z.string().url().optional(),
     links: z.array(z.object({
