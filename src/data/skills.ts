@@ -3,36 +3,36 @@ export const skillsData = {
     title: "Datenbanken",
     icon: "M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4",
     technologies: [
-      { name: "MySQL", level: 95, color: "from-orange-500 to-orange-600" },
-      { name: "Firebase", level: 90, color: "from-yellow-500 to-orange-500" },
-      { name: "MongoDB", level: 75, color: "from-green-600 to-green-700" }
+      { name: "MySQL", level: 95, color: "from-slate-400 to-slate-500" },
+      { name: "Firebase", level: 90, color: "from-amber-300 to-orange-300" },
+      { name: "MongoDB", level: 75, color: "from-emerald-400 to-emerald-500" }
     ]
   },
   backend: {
     title: "Backend",
     icon: "M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z",
     technologies: [
-      { name: "Java", level: 100, color: "from-red-600 to-orange-600" },
-      { name: "REST APIs", level: 95, color: "from-indigo-500 to-purple-500" },
-      { name: "Node.js (Express.js / Hono ...)", level: 90, color: "from-green-500 to-green-600" }
+      { name: "Java", level: 100, color: "from-red-300 to-orange-300" },
+      { name: "REST APIs", level: 95, color: "from-indigo-400 to-purple-400" },
+      { name: "Node.js (Express.js / Hono ...)", level: 90, color: "from-green-300 to-green-400" }
     ]
   },
   frontend: {
     title: "Frontend",
     icon: "M3 3h18v4H3V3zm0 6h18v8H3V9zm2 2h6v4H5v-4zm8 0h6v2h-6v-2zm0 3h4v1h-4v-1z",
     technologies: [
-      { name: "React", level: 95, color: "from-blue-500 to-blue-600" },
-      { name: "HTML/CSS/JS", level: 95, color: "from-orange-500 to-red-500" },
-      { name: "TypeScript", level: 90, color: "from-blue-600 to-blue-700" }
+      { name: "React", level: 95, color: "from-blue-400 to-blue-500" },
+      { name: "HTML/CSS/JS", level: 95, color: "from-orange-300 to-red-300" },
+      { name: "TypeScript", level: 90, color: "from-blue-500 to-blue-600" }
     ]
   },
   tools: {
     title: "Tools & Platformen",
     icon: "M12 15l-4-4h3V7h2v4h3l-4 4zm-8 4h16v2H4v-2z",
     technologies: [
-      { name: "Linux", level: 95, color: "from-yellow-500 to-orange-500" },
-      { name: "Docker", level: 90, color: "from-blue-500 to-blue-600" },
-      { name: "Git", level: 90, color: "from-orange-600 to-red-600" }
+      { name: "Linux", level: 95, color: "from-yellow-300 to-orange-300" },
+      { name: "Docker", level: 90, color: "from-blue-400 to-blue-500" },
+      { name: "Git", level: 90, color: "from-orange-300 to-red-300" }
     ]
   }
 };

@@ -38,10 +38,35 @@
   }
 }
 
+@keyframes shimmer-divider {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
 .animate-gentle-pulse {
   animation: gentle-pulse 3s ease-in-out infinite;
 }
 
 .animate-float-subtle {
   animation: float-subtle 6s ease-in-out infinite;
+}
+
+.section-divider {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(148, 163, 184, 0.2) 15%,
+    rgba(100, 116, 139, 0.4) 40%,
+    rgba(71, 85, 105, 0.5) 50%,
+    rgba(100, 116, 139, 0.4) 60%,
+    rgba(148, 163, 184, 0.2) 85%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-divider 8s ease-in-out infinite;
+  height: 1px;
 }

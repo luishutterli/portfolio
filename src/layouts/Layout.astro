@@ -13,20 +13,20 @@ const { title = "Luis Hutterli - Portfolio" } = Astro.props;
 
 <!doctype html>
 <html lang="de" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Luis Hutterli - Kreuzlingen, Schweiz" />
-		<title>{title}</title>
-		<ClientRouter />
-	</head>
-	<body class="flex flex-col bg-white min-h-screen">
-		<Navigation transition:name="nav" transition:persist />
-		<main class="flex-1">
-			<slot />
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Luis Hutterli - Kreuzlingen, Schweiz" />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body class="flex flex-col bg-white min-h-screen">
+    <Navigation transition:name="nav" transition:persist />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>

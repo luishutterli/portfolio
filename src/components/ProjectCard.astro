@@ -18,6 +18,7 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
           <img
             src={project.data.image}
             alt={project.data.name}
+            loading="lazy"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             transition:name={`project-image-${project.id}`}
           />
