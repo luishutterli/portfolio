@@ -24,10 +24,10 @@ const sortedProjects = projects.sort(
 <Layout title="Projekte">
   <div class="min-h-screen">
 
-    <section class="bg-gradient-to-br from-background-light via-background-blue to-background-cyan px-4 lg:px-6 pt-16 pb-8">
+    <section class="bg-gradient-to-br from-background-light via-background-blue to-background-cyan px-4 lg:px-6 pt-12 pb-6">
       <div class="mx-auto max-w-6xl">
-        <div class="mb-8 text-center">
-          <h1 class="mb-4 font-bold text-slate-900 text-3xl lg:text-4xl" transition:name="page-title">
+        <div class="mb-4 text-center">
+          <h1 class="mb-2 font-bold text-slate-900 text-3xl lg:text-4xl" transition:name="page-title">
             Alle Projekte
           </h1>
           <p class="mx-auto max-w-2xl text-neutral text-lg">
@@ -38,9 +38,9 @@ const sortedProjects = projects.sort(
     </section>
 
 
-    <section class="px-4 lg:px-6 py-16">
+    <section class="px-4 lg:px-6 py-8">
       <div class="mx-auto max-w-6xl">
-        <div class="gap-6 lg:gap-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div class="gap-4 lg:gap-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {sortedProjects.map((project: CollectionEntry<"projects">) => (
             <div class="group hover:scale-105 transition-transform duration-300">
               <ProjectCard project={project} />
@@ -49,7 +49,7 @@ const sortedProjects = projects.sort(
         </div>
         
         {sortedProjects.length === 0 && (
-          <div class="py-12 text-center">
+          <div class="py-6 text-center">
             <p class="text-slate-500 text-lg">Noch keine Projekte verfügbar.</p>
           </div>
         )}

@@ -7,7 +7,7 @@ state: "In Arbeit"
 github: "https://github.com/luishutterli/portfolio"
 links:
   - title: "Live Demo"
-    url: "https://luishuterli.ch"
+    url: "https://luishutterli.ch"
 featured: true
 startDate: 2025-07-14
 ---

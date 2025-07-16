@@ -2,11 +2,11 @@
 import { skillsData, additionalTechnologies } from "../data/skills.ts";
 ---
 
-<section class="bg-white py-12">
+<section class="bg-white py-6">
   <div class="mx-auto px-4 lg:px-6 max-w-6xl">
 
-    <div class="mb-10 text-center">
-      <h2 class="mb-3 font-bold text-slate-900 text-2xl lg:text-3xl">
+    <div class="mb-6 text-center">
+      <h2 class="mb-2 font-bold text-slate-900 text-2xl lg:text-3xl">
         Technische Fähigkeiten
       </h2>
       <p class="mx-auto max-w-2xl text-neutral text-base leading-relaxed">
@@ -20,7 +20,7 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
         <div class="group bg-gradient-to-br from-white to-background-light hover:shadow-xl p-4 border border-neutral-light/30 hover:border-primary/30 rounded-2xl transition-all hover:-translate-y-2 duration-300">
 
           <div class="flex items-center gap-3 mb-4">
-            <div class="bg-gradient-to-br from-primary/10 to-secondary/10 p-2.5 rounded-xl group-hover:scale-110 transition-transform duration-300">
+            <div class="bg-gradient-to-br from-primary/10 to-secondary/10 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
               <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={category.icon}/>
               </svg>
@@ -56,21 +56,21 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
   </div>
 
 
-  <div class="mx-auto px-4 lg:px-6 py-6 max-w-6xl">
-    <div class="mb-8 text-center">
+  <div class="mx-auto px-4 lg:px-6 py-8 max-w-6xl">
+    <div class="mb-6 text-center">
       <p class="mx-auto max-w-2xl text-neutral text-base">
         Weitere Technologien und Tools, die ich in verschiedenen Projekten einsetze:
       </p>
     </div>
     
 
-    <div class="gap-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mx-auto max-w-6xl">
+    <div class="gap-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-auto max-w-6xl">
       {additionalTechnologies.map((tech, index) => (
         <div 
           class={`tech-tag relative ${tech.tooltip ? "group cursor-help" : ""}`}
           style={`animation-delay: ${index * 0.1}s`}
         >
-          <span class="inline-block relative bg-gradient-to-r from-slate-100 hover:from-primary/10 to-slate-200 hover:to-secondary/10 hover:shadow-md px-3 py-1.5 border border-slate-300 hover:border-primary/30 rounded-lg w-full font-medium text-slate-700 hover:text-primary text-sm text-center hover:scale-105 transition-all duration-300 transform">
+          <span class="inline-block relative bg-gradient-to-r from-slate-100 hover:from-primary/10 to-slate-200 hover:to-secondary/10 hover:shadow-md px-3 py-2 border border-slate-300 hover:border-primary/30 rounded-lg w-full font-medium text-slate-700 hover:text-primary text-sm text-center hover:scale-105 transition-all duration-300 transform">
             {tech.name}
             {tech.tooltip && (
               <span class="-top-1 -right-1 absolute bg-primary opacity-60 rounded-full w-2 h-2 animate-pulse"></span>
@@ -91,7 +91,7 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
         </div>
       ))}
     </div>
-    <div class="mt-1 text-center">
+    <div class="mt-4 text-center">
       <p class="mx-auto max-w-2xl text-neutral text-lg">
         ... und noch viele mehr!
       </p>
@@ -172,7 +172,7 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
   @media (max-width: 640px) {
     .tech-tag span {
       font-size: 0.75rem;
-      padding: 0.5rem 0.75rem;
+      padding: 0.375rem 0.625rem;
     }
   }
 </style>

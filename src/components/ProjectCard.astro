@@ -11,10 +11,10 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
 ---
 
 <article class="group bg-white hover:shadow-xl border border-neutral-light/50 hover:border-primary/30 rounded-lg h-full overflow-hidden transition-all hover:-translate-y-2 duration-300">
-  <div class="p-4">
+  <div class="p-3">
     {
       showImage && project.data.image && (
-        <div class="relative bg-background-light mb-3 rounded-lg aspect-video overflow-hidden">
+        <div class="relative bg-background-light mb-2 rounded-lg aspect-video overflow-hidden">
           <img
             src={project.data.image}
             alt={project.data.name}
@@ -26,8 +26,8 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
     }
     
 
-    <div class="mb-2">
-      <div class="flex justify-between items-start gap-3 mb-2">
+    <div class="mb-1.5">
+      <div class="flex justify-between items-start gap-3 mb-1.5">
         <h3 class="font-medium text-slate-900 text-lg leading-tight">
           <a
             href={`/projects/${project.id}`}
@@ -59,7 +59,7 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
       </div>
       
 
-      <div class="flex flex-wrap gap-1.5 mb-2">
+      <div class="flex flex-wrap gap-1.5 mb-1.5">
         {
           project.data.tags.slice(0, 4).map((tag: string) => (
             <span class="bg-background-light px-2 py-1 border border-neutral-light/30 rounded text-neutral text-xs">
@@ -76,7 +76,7 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
     </div>
 
 
-    <p class="mb-3 text-neutral text-sm leading-relaxed">
+    <p class="mb-2 text-neutral text-sm leading-relaxed">
       {
         showFullDescription
           ? project.data.description
