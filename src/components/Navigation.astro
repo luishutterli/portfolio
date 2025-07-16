@@ -5,16 +5,13 @@ const currentPath = Astro.url.pathname;
 <nav class="top-0 z-50 sticky bg-gradient-to-r from-white/95 via-background-light/95 to-white/95 shadow-sm backdrop-blur-md border-neutral-light/50 border-b">
   <div class="mx-auto px-4 lg:px-6 max-w-6xl">
     <div class="flex justify-between items-center h-16">
-
       <a 
         href="/" 
         class="group relative font-bold text-slate-900 hover:text-primary text-xl hover:scale-105 transition-all duration-300 transform"
         transition:name="nav-logo"
       >
-        <span class="z-10 relative">Luis Hutterli</span>
-        <div class="-z-10 absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+        Luis Hutterli
       </a>
-
 
       <div class="flex items-center space-x-1">
         <a 
@@ -53,7 +50,6 @@ const currentPath = Astro.url.pathname;
 </nav>
 
 <style>
-  
   @keyframes float {
     0%, 100% {
       transform: translateY(0px);
