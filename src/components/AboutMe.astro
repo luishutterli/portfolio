@@ -1,0 +1,161 @@
+---
+const terminalConfig = {
+  command: "whoami",
+  responses: [
+    "Luis Hutterli - 18 Jahre alt, Kreuzlingen - Schweiz",
+    "Programmierer mit 7+ Jahren Erfahrung",
+    "Spezialisiert auf Backend-Entwicklung",
+  ],
+  speeds: {
+    command: 100,
+    typing: 40,
+    deleting: 20,
+    pauseAfterType: 1000,
+    pauseAfterDelete: 300,
+    initialDelay: 1000,
+  },
+};
+---
+
+<section class="relative bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 py-12 text-gray-800">
+  <div class="mx-auto px-8 container">
+    <div class="mb-8 text-center">
+      <h2 class="bg-clip-text bg-gradient-to-r from-neutral-dark via-primary to-secondary mb-4 font-bold text-transparent text-3xl lg:text-4xl">
+        Über mich
+      </h2>
+    </div>
+
+    <div class="mx-auto mb-8 max-w-3xl">
+      <div class="bg-slate-900 shadow-2xl rounded-lg overflow-hidden">
+        <div class="flex items-center gap-2 bg-slate-800 px-4 py-3">
+          <div class="flex gap-2">
+            <div class="bg-red-500 rounded-full w-3 h-3"></div>
+            <div class="bg-yellow-500 rounded-full w-3 h-3"></div>
+            <div class="bg-green-500 rounded-full w-3 h-3"></div>
+          </div>
+          <div class="ml-4 font-mono text-slate-400 text-sm">
+            bash
+          </div>
+        </div>
+        
+        <div class="p-6 font-mono text-sm">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-green-400">luis@portfolio</span>
+            <span class="text-neutral-light">:</span>
+            <span class="text-blue-400">~</span>
+            <span class="text-neutral-light">$</span>
+            <span class="text-white" id="command"></span>
+          </div>
+          <div class="text-neutral-light">
+            <span class="block min-h-[2.4em] text-neutral-light leading-[1.2em]" id="response"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto max-w-4xl">
+      <div class="items-center gap-8 grid md:grid-cols-2">
+          <div class="space-y-3">
+            <h3 class="font-semibold text-primary text-xl">Meine Geschichte</h3>
+            <p class="text-neutral leading-relaxed">
+              Meine Leidenschaft für die Informatik begann <strong class="text-primary">im Alter von 11 Jahren</strong>, 
+              als ich auf dem Laptop meines Vaters erste <strong class="text-orange-600">HTML-Webseiten</strong> erstellte. 
+              Das weckte mein Interesse für Technologie und führte dazu, dass ich meinen eigenen Computer haben wollte.
+            </p>
+            <p class="text-neutral leading-relaxed">
+              Nach dem erfolgreichen Bau meines ersten PCs wunderte ich mich, was man alles damit machen kann, und entdeckte die
+              <strong class="text-emerald-600">Minecraft-Plugin-Entwicklung</strong> 
+              mit <strong class="text-amber-700">Java</strong>. Mit der Zeit machte ich mich mit Java immer vertrauter 
+              und begann Programme ausserhalb der Minecraft-Welt zu entwickeln.
+            </p>
+            <p class="text-neutral leading-relaxed">
+              Heute habe ich <strong class="text-primary">mehr als 7 Jahre Erfahrung</strong> als 
+              <strong class="text-secondary">angehender Applikationsentwickler</strong> und stosse laufend 
+              auf neue Technologien. <strong class="text-yellow-500">wobei ich Java treu geblieben bin!</strong>
+            </p>
+          </div>
+
+        <div>
+          <div class="bg-white/70 shadow-lg backdrop-blur-sm p-6 rounded-xl">
+            <h4 class="mb-4 font-semibold text-neutral-dark text-center">Auf einen Blick</h4>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-neutral">Alter</span>
+                <span class="font-semibold text-primary">18 Jahre</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-neutral">Erfahrung</span>
+                <span class="font-semibold text-secondary">7+ Jahre</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-neutral">Standort</span>
+                <span class="font-semibold text-accent">Kreuzlingen, Schweiz</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-neutral">Fokus</span>
+                <span class="font-semibold text-neutral-dark">Backend, Datenbanken & Fullstack</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ terminalConfig }}>
+  document.addEventListener("astro:page-load", function() {
+    const commandElement = document.getElementById("command");
+    const responseElement = document.getElementById("response");
+    
+    if (!commandElement || !responseElement) return;
+    
+    const { command, responses, speeds } = terminalConfig;
+    
+    let commandIndex = 0;
+    let responseIndex = 0;
+    let currentResponseIndex = 0;
+    let isDeleting = false;
+    
+    function typeCommand() {
+      if (!commandElement) return;
+      
+      if (commandIndex < command.length) {
+        commandElement.textContent += command.charAt(commandIndex);
+        commandIndex++;
+        setTimeout(typeCommand, speeds.command);
+      } else {
+        setTimeout(() => {
+          typeResponse();
+        }, speeds.pauseAfterType);
+      }
+    }
+    
+    function typeResponse() {
+      if (!responseElement) return;
+      
+      const currentResponse = responses[currentResponseIndex];
+      
+      if (!isDeleting && responseIndex < currentResponse.length) {
+        responseElement.textContent += currentResponse.charAt(responseIndex);
+        responseIndex++;
+        setTimeout(typeResponse, speeds.typing);
+      } else if (!isDeleting && responseIndex === currentResponse.length) {
+        setTimeout(() => {
+          isDeleting = true;
+          typeResponse();
+        }, speeds.pauseAfterType);
+      } else if (isDeleting && responseIndex > 0) {
+        responseElement.textContent = currentResponse.substring(0, responseIndex - 1);
+        responseIndex--;
+        setTimeout(typeResponse, speeds.deleting);
+      } else if (isDeleting && responseIndex === 0) {
+        isDeleting = false;
+        currentResponseIndex = (currentResponseIndex + 1) % responses.length;
+        setTimeout(typeResponse, speeds.pauseAfterDelete);
+      }
+    }
+    
+    setTimeout(typeCommand, speeds.initialDelay);
+  });
+</script>
