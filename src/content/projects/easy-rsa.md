@@ -1,6 +1,6 @@
 ---
 name: "Easy-RSA"
-description: "Lernplattform für den RSA-Algorithmus"
+description: "Interaktive Lernplattform für den RSA-Algorithmus mit Quizzen, interaktiven Visualisierungen und noch viel mehr"
 image: "/images/easy-rsa/easy-rsa-cover.png"
 tags: ["React", "Markdown", "JavaScript", "Tailwind CSS"]
 state: "Fertig"

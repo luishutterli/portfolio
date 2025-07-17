@@ -84,8 +84,8 @@ const { project, showImage = true, showFullDescription = false } = Astro.props;
       {
         showFullDescription
           ? project.data.description
-          : project.data.description.length > 100
-            ? project.data.description.substring(0, 100) + "..."
+          : project.data.description.length > 200
+            ? project.data.description.substring(0, 200) + "..."
             : project.data.description
       }
     </p>
