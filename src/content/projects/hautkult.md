@@ -48,3 +48,8 @@ Die Applikation und das ganze System werden von mir betreut und gewartet.
 Es geht hier hauptsächlich um einen Linux-Server, auf dem die MySQL-Datenbank und der Server laufen.
 
 Zusätzlich läuft auf dem Server auch ein PHPMyAdmin-Interface, um die Datenbank zu verwalten, jedoch läuft dieses passwortgeschützt auf einem Apache-Webserver.
+
+### Wichtige Hinweise
+Die Applikation und der Quellcode sind absichtlich nicht öffentlich zugänglich, da es sich um ein Kundenprojekt handelt.
+
+Jedoch wird dieses Projekt in Zukunft durch ein neues Open-Source-Projekt ersetzt. Hier das Projekt: [Swisscounts](/projects/swisscounts)
