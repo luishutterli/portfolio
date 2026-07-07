@@ -40,11 +40,11 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
 
                 <div class="relative bg-slate-200 rounded-full h-2 overflow-hidden">
                   <div 
-                    class={`absolute left-0 top-0 bg-gradient-to-r ${tech.color} rounded-full h-full transition-all duration-1000 ease-out skill-progress`}
+                    class={`absolute left-0 top-0 bg-linear-to-r ${tech.color} rounded-full h-full transition-all duration-1000 ease-out skill-progress`}
                     style={`width: ${tech.level}%`}
                   >
 
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+                    <div class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
                   </div>
                 </div>
               </div>
@@ -70,7 +70,7 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
           class={`tech-tag relative ${tech.tooltip ? "group cursor-help" : ""}`}
           style={`animation-delay: ${index * 0.1}s`}
         >
-          <span class="inline-block relative bg-gradient-to-r from-slate-100 hover:from-primary/10 to-slate-200 hover:to-secondary/10 hover:shadow-md px-3 py-2 border border-slate-300 hover:border-primary/30 rounded-lg w-full font-medium text-slate-700 hover:text-primary text-sm text-center hover:scale-105 transition-all duration-300 transform">
+          <span class="inline-block relative bg-linear-to-r from-slate-100 hover:from-primary/10 to-slate-200 hover:to-secondary/10 hover:shadow-md px-3 py-2 border border-slate-300 hover:border-primary/30 rounded-lg w-full font-medium text-slate-700 hover:text-primary text-sm text-center hover:scale-105 transition-all duration-300 transform">
             {tech.name}
             {tech.tooltip && (
               <span class="-top-1 -right-1 absolute bg-primary opacity-60 rounded-full w-2 h-2 animate-pulse"></span>

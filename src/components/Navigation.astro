@@ -2,7 +2,7 @@
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="top-0 z-50 sticky bg-gradient-to-r from-white/95 via-background-light/95 to-white/95 shadow-sm backdrop-blur-md border-neutral-light/50 border-b">
+<nav class="top-0 z-50 sticky bg-linear-to-r from-white/95 via-background-light/95 to-white/95 shadow-sm backdrop-blur-md border-neutral-light/50 border-b">
   <div class="mx-auto px-4 lg:px-6 max-w-6xl">
     <div class="flex justify-between items-center h-16">
       <a 
@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname;
           {currentPath === "/" && (
             <div class="bottom-0 left-1/2 absolute bg-primary rounded-full w-1 h-1 -translate-x-1/2 animate-bounce transform"></div>
           )}
-          <div class="absolute inset-0 bg-gradient-to-r from-primary/0 group-hover:from-primary/5 to-secondary/0 group-hover:to-secondary/5 rounded-lg transition-all duration-300"></div>
+          <div class="absolute inset-0 bg-linear-to-r from-primary/0 group-hover:from-primary/5 to-secondary/0 group-hover:to-secondary/5 rounded-lg transition-all duration-300"></div>
         </a>
         <a 
           href="/projects" 
@@ -42,7 +42,7 @@ const currentPath = Astro.url.pathname;
           {currentPath.startsWith("/projects") && (
             <div class="bottom-0 left-1/2 absolute bg-primary rounded-full w-1 h-1 -translate-x-1/2 animate-bounce transform"></div>
           )}
-          <div class="absolute inset-0 bg-gradient-to-r from-primary/0 group-hover:from-primary/5 to-secondary/0 group-hover:to-secondary/5 rounded-lg transition-all duration-300"></div>
+          <div class="absolute inset-0 bg-linear-to-r from-primary/0 group-hover:from-primary/5 to-secondary/0 group-hover:to-secondary/5 rounded-lg transition-all duration-300"></div>
         </a>
       </div>
     </div>

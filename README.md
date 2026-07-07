@@ -14,8 +14,8 @@ Persönliches Portfolio gebaut mit [Astro](https://astro.build/)
 ## Entwicklung
 
 ```sh
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 Live: [luishutterli.ch](https://luishutterli.ch)
