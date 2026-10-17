@@ -27,3 +27,4 @@ pnpm-debug.log*
 PRODUCT.md
 .impeccable/
 CLAUDE.md
+.claude/

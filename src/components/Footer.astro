@@ -1,120 +1,53 @@
 ---
-import { Icon } from "astro-icon/components";
-
 const currentYear = new Date().getFullYear();
+
+const contactLinks = [
+  { href: "https://github.com/luishutterli", label: "GitHub", external: true },
+  { href: "https://linkedin.com/in/luishutterli/", label: "LinkedIn", external: true },
+  { href: "mailto:luis@luishutterli.ch", label: "luis@luishutterli.ch", external: false },
+];
 ---
 
-<footer class="relative bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden text-white">
-
-  <div class="absolute inset-0 opacity-75">
-    <div class="top-0 left-0 absolute bg-linear-to-r from-primary/20 to-secondary/20 w-full h-full"></div>
-    <div class="top-10 left-10 absolute bg-primary/10 blur-xl rounded-full w-32 h-32"></div>
-    <div class="right-10 bottom-10 absolute bg-secondary/10 blur-xl rounded-full w-48 h-48"></div>
-  </div>
-
-  <div class="z-10 relative mx-auto px-6 lg:px-8 py-8 max-w-6xl">
-
-    <div class="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6">
-      
-
-      <div class="lg:col-span-2">
-        <div class="mb-4">
-          <h3 class="mb-1 font-bold text-white hover:text-primary-light text-2xl transition-colors duration-300 cursor-default">
-            Luis Hutterli
-          </h3>
-          <p class="mb-2 font-medium text-slate-300 text-lg">
-            Angehender Applikationsentwickler EFZ
-          </p>
-          <p class="max-w-md text-slate-400 leading-relaxed">
-            Leidenschaftlich für moderne Technologien und innovative Lösungen. 
-            Spezialisiert auf Backend-Entwicklung und Full-Stack-Projekte.
-          </p>
-        </div>
+<footer class="bg-ink text-paper">
+  <div class="mx-auto px-4 lg:px-6 py-12 max-w-6xl">
+    <div class="gap-10 grid grid-cols-1 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <p class="font-semibold text-xl tracking-tight">Luis Hutterli</p>
+        <p class="mt-1 text-zinc-300">Angehender Applikationsentwickler EFZ</p>
+        <p class="mt-3 max-w-md text-zinc-400 leading-relaxed">
+          Spezialisiert auf Backend-Entwicklung und Full-Stack-Projekte.
+        </p>
       </div>
 
-
       <div>
-        <h4 class="flex items-center gap-2 mb-2 font-semibold text-white text-lg">
-          <Icon name="lucide:link" class="w-5 h-5 text-primary-light" />
-          Quick Links
-        </h4>
-        <nav class="space-y-2">
-          <a href="/" class="group block text-slate-300 hover:text-primary-light transition-colors duration-300">
-            <span class="flex items-center gap-2">
-              <Icon name="lucide:house" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              Home
-            </span>
-          </a>
-          <a href="/projects" class="group block text-slate-300 hover:text-primary-light transition-colors duration-300">
-            <span class="flex items-center gap-2">
-              <Icon name="lucide:folder-kanban" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              Projekte
-            </span>
-          </a>
-        </nav>
+        <h2 class="font-medium text-zinc-400 text-sm">Seiten</h2>
+        <ul class="space-y-2 mt-3">
+          <li><a href="/" class="text-zinc-200 hover:text-paper hover:underline">Home</a></li>
+          <li><a href="/projects" class="text-zinc-200 hover:text-paper hover:underline">Projekte</a></li>
+        </ul>
       </div>
 
-
       <div>
-        <h4 class="flex items-center gap-2 mb-2 font-semibold text-white text-lg">
-          <Icon name="lucide:users" class="w-5 h-5 text-secondary-light" />
-          Verbinden
-        </h4>
-        <div class="space-y-1">
-          <a 
-            href="https://github.com/luishutterli" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="group flex items-center gap-3 hover:bg-slate-800/30 -ml-2 p-2 rounded-lg text-slate-300 hover:text-white transition-all duration-300"
-          >
-            <div class="bg-slate-800/50 group-hover:bg-primary/20 p-2 rounded-lg transition-colors duration-300">
-              <Icon name="simple-icons:github" class="w-5 h-5" />
-            </div>
-            <span class="font-medium">GitHub</span>
-          </a>
-          
-          <a 
-            href="https://linkedin.com/in/luishutterli/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="group flex items-center gap-3 hover:bg-slate-800/30 -ml-2 p-2 rounded-lg text-slate-300 hover:text-white transition-all duration-300"
-          >
-            <div class="bg-slate-800/50 group-hover:bg-primary/20 p-2 rounded-lg transition-colors duration-300">
-              <Icon name="simple-icons:linkedin" class="w-5 h-5" />
-            </div>
-            <span class="font-medium">LinkedIn</span>
-          </a>
-          
-          <a 
-            href="mailto:luis@luishutterli.ch" 
-            class="group flex items-center gap-3 hover:bg-slate-800/30 -ml-2 p-2 rounded-lg text-slate-300 hover:text-white transition-all duration-300"
-          >
-            <div class="bg-slate-800/50 group-hover:bg-secondary/20 p-2 rounded-lg transition-colors duration-300">
-              <Icon name="lucide:mail" class="w-5 h-5" />
-            </div>
-            <span class="font-medium">Email</span>
-          </a>
-        </div>
+        <h2 class="font-medium text-zinc-400 text-sm">Kontakt</h2>
+        <ul class="space-y-2 mt-3">
+          {contactLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-zinc-200 hover:text-paper hover:underline"
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
 
-    <div class="mb-4 border-slate-700 border-t"></div>
-
-    <div class="flex md:flex-row flex-col justify-between items-center gap-3">
-      <p class="text-slate-400 text-sm">
-        &copy; <span data-year>{currentYear}</span> Luis Hutterli. Alle Rechte vorbehalten.
-      </p>
-
-      <div class="flex items-center gap-4 text-slate-400 text-sm">
-        <span class="flex items-center gap-2">
-          <Icon name="lucide:map-pin" class="w-4 h-4 text-secondary-light" />
-          Kreuzlingen, Schweiz
-        </span>
-        <span class="flex items-center gap-2">
-          <span class="inline-block bg-green-400 rounded-full w-2 h-2 animate-pulse"></span>
-          Verfügbar
-        </span>
-      </div>
+    <div class="flex md:flex-row flex-col justify-between gap-2 mt-10 pt-6 border-zinc-800 border-t text-zinc-400 text-sm">
+      <p>&copy; <span data-year>{currentYear}</span> Luis Hutterli. Alle Rechte vorbehalten.</p>
+      <p>Kreuzlingen, Schweiz · Verfügbar</p>
     </div>
   </div>
 </footer>

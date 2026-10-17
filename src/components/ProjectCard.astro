@@ -1,108 +1,62 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
 
 interface Props {
   project: CollectionEntry<"projects">;
   showImage?: boolean;
   showFullDescription?: boolean;
+  headingLevel?: "h2" | "h3";
 }
 
-const { project, showImage = true, showFullDescription = false } = Astro.props;
+const {
+  project,
+  showImage = true,
+  showFullDescription = false,
+  headingLevel = "h3",
+} = Astro.props;
+const Heading = headingLevel;
+const visibleTags = project.data.tags.slice(0, 4);
+const hiddenTagCount = project.data.tags.length - visibleTags.length;
+const description =
+  !showFullDescription && project.data.description.length > 200
+    ? `${project.data.description.substring(0, 200)}...`
+    : project.data.description;
 ---
 
-<article class="group bg-white hover:shadow-xl border border-neutral-light/50 hover:border-primary/30 rounded-lg h-full overflow-hidden transition-all hover:-translate-y-2 duration-300">
-  <div class="p-3">
-    {
-      showImage && project.data.image && (
-        <a 
-          href={`/projects/${project.id}`}
-          class="block relative bg-background-light mb-2 rounded-lg aspect-video overflow-hidden"
-        >
-          <Image
-            src={project.data.image}
-            alt={project.data.name}
-            widths={[400, 800, 1200]}
-            sizes="(min-width: 1280px) 384px, (min-width: 768px) 50vw, 100vw"
-            loading="lazy"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            transition:name={`project-image-${project.id}`}
-          />
-        </a>
-      )
-    }
-    
-
-    <div class="mb-1.5">
-      <div class="flex justify-between items-start gap-3 mb-1.5">
-        <h3 class="font-medium text-slate-900 text-lg leading-tight">
-          <a
-            href={`/projects/${project.id}`}
-            class="text-slate-900 hover:text-primary no-underline transition-colors duration-200"
-            transition:name={`project-title-${project.id}`}
-          >
-            {project.data.name}
-          </a>
-        </h3>
-        
-        <div class="flex shrink-0 items-center gap-1.5">
-          <span
-            class={`px-2 py-1 rounded text-xs ${
-              project.data.state === "Fertig"
-                ? "bg-secondary/10 text-secondary-hover"
-                : "bg-accent/10 text-accent"
-            }`}
-          >
-            {project.data.state}
-          </span>
-          {
-            project.data.featured && (
-              <span class="bg-primary/10 px-2 py-1 rounded font-medium text-primary text-xs">
-                ★
-              </span>
-            )
-          }
-        </div>
+<article class="group relative flex flex-col h-full">
+  {
+    showImage && project.data.image && (
+      <div class="bg-paper-2 mb-5 border border-line rounded-md aspect-video overflow-hidden">
+        <Image
+          src={project.data.image}
+          alt=""
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 1280px) 384px, (min-width: 768px) 50vw, 100vw"
+          loading="lazy"
+          class="w-full h-full object-cover"
+          transition:name={`project-image-${project.id}`}
+        />
       </div>
-      
+    )
+  }
 
-      <div class="flex flex-wrap gap-1.5 mb-1.5">
-        {
-          project.data.tags.slice(0, 4).map((tag) => (
-            <span class="bg-background-light px-2 py-1 border border-neutral-light/30 rounded text-neutral text-xs">
-              {tag}
-            </span>
-          ))
-        }
-        {project.data.tags.length > 4 && (
-          <span class="bg-background-light px-2 py-1 border border-neutral-light/30 rounded text-neutral-light text-xs">
-            +{project.data.tags.length - 4}
-          </span>
-        )}
-      </div>
-    </div>
-
-
-    <p class="mb-2 text-neutral text-sm leading-relaxed">
-      {
-        showFullDescription
-          ? project.data.description
-          : project.data.description.length > 200
-            ? project.data.description.substring(0, 200) + "..."
-            : project.data.description
-      }
-    </p>
-
-
-    <div class="flex justify-between items-center">
+  <div class="flex justify-between items-baseline gap-4">
+    <Heading class="font-semibold text-ink text-xl leading-snug tracking-tight">
       <a
         href={`/projects/${project.id}`}
-        class="inline-flex items-center gap-1 font-medium text-primary hover:text-primary-hover text-sm transition-colors group-hover:translate-x-1 duration-200"
+        class="group-hover:text-accent transition-colors after:absolute after:inset-0"
+        transition:name={`project-title-${project.id}`}
       >
-        Details ansehen 
-        <Icon name="lucide:chevron-right" class="w-4 h-4 transition-transform duration-200" />
+        {project.data.name}
       </a>
-    </div>
+    </Heading>
+    <span class="shrink-0 text-muted text-sm">{project.data.state}</span>
   </div>
+
+  <p class="mt-2 text-ink-soft leading-relaxed">{description}</p>
+
+  <p class="mt-3 text-muted text-sm">
+    {visibleTags.join(" · ")}{hiddenTagCount > 0 && ` · +${hiddenTagCount}`}
+  </p>
 </article>

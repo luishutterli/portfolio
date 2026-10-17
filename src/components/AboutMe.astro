@@ -32,16 +32,12 @@ const terminalConfig = {
 };
 ---
 
-<section class="relative py-12 text-gray-800">
-  <div class="mx-auto px-8 container">
-    <div class="mb-4 text-center">
-      <h2 class="bg-clip-text bg-linear-to-r from-neutral-dark via-primary to-secondary mb-2 font-bold text-transparent text-3xl lg:text-4xl">
-        Über mich
-      </h2>
-    </div>
+<section class="border-line border-b">
+  <div class="mx-auto px-4 lg:px-6 py-14 lg:py-20 max-w-6xl">
+    <h2 class="font-semibold text-ink text-3xl lg:text-4xl tracking-tight">Über mich</h2>
 
-    <div class="mx-auto mb-4 max-w-3xl" data-terminal={JSON.stringify(terminalConfig)}>
-      <div class="bg-slate-900 shadow-2xl rounded-lg overflow-hidden">
+    <div class="mt-10 max-w-3xl" data-terminal={JSON.stringify(terminalConfig)}>
+      <div class="bg-slate-900 rounded-lg overflow-hidden">
         <div class="flex items-center gap-2 bg-slate-800 px-4 py-3">
           <div class="flex gap-2">
             <div class="bg-red-500 rounded-full w-3 h-3"></div>
@@ -52,67 +48,64 @@ const terminalConfig = {
             bash
           </div>
         </div>
-        
+
         <div class="p-6 font-mono text-sm">
           <div class="flex items-center gap-2 mb-2">
             <span class="text-green-400">luis@portfolio</span>
-            <span class="text-neutral-light">:</span>
+            <span class="text-slate-400">:</span>
             <span class="text-blue-400">~</span>
-            <span class="text-neutral-light">$</span>
+            <span class="text-slate-400">$</span>
             <span class="text-white" id="command"></span>
           </div>
-          <div class="text-neutral-light">
-            <span class="block min-h-[2.4em] text-neutral-light leading-[1.2em]" id="response"></span>
+          <div class="text-slate-400">
+            <span class="block min-h-[2.4em] text-slate-300 leading-[1.2em]" id="response"></span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="mx-auto max-w-4xl">
-      <div class="items-center gap-6 grid md:grid-cols-2">
-          <div class="space-y-2">
-            <h3 class="font-semibold text-primary text-xl">Meine Geschichte</h3>
-            <p class="text-neutral leading-relaxed">
-              Ich entdeckte meine Leidenschaft für die Informatik schon <strong class="text-primary">im Alter von 11 Jahren</strong>, 
-              als ich auf dem Laptop von meinem Vater meine ersten <strong class="text-orange-600">HTML-Seiten</strong> kreierte.
-              Mein Interesse für Technologie wurde geweckt und ich wollte meinen eigenen Computer haben.
-            </p>
-            <p class="text-neutral leading-relaxed">
-              Nach dem erfolgreichen Bau von meinem ersten PC wunderte ich mich, was man denn alles damit machen kann, und entdeckte die
-              <strong class="text-emerald-600">Minecraft-Plugin-Entwicklung</strong> 
-              mit <strong class="text-amber-700">Java</strong>. Ich konnte mich mit der Zeit immer besser mit Java vertraut machen
-              und begann bald Programme ausserhalb der Minecraft-Welt zu entwickeln.
-            </p>
-            <p class="text-neutral leading-relaxed">
-              Heute habe ich <strong class="text-primary">mehr als {experienceYears} Jahre Erfahrung</strong> als 
-              <strong class="text-secondary">angehender Applikationsentwickler</strong> und probiere laufend 
-              neue Technologien aus. <strong class="text-yellow-500">Wobei ich Java treu geblieben bin!</strong>
-            </p>
-          </div>
-
-        <div>
-          <div class="bg-white/70 shadow-lg backdrop-blur-sm p-4 rounded-xl">
-            <h4 class="mb-3 font-semibold text-neutral-dark text-center">Auf einen Blick</h4>
-            <div class="space-y-2">
-              <div class="flex justify-between items-center">
-                <span class="text-neutral">Alter</span>
-                <span class="font-semibold text-primary">{age} Jahre</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-neutral">Erfahrung</span>
-                <span class="font-semibold text-secondary">{experienceYears}+ Jahre</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-neutral">Standort</span>
-                <span class="font-semibold text-accent">Kreuzlingen, Schweiz</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-neutral">Fokus</span>
-                <span class="font-semibold text-neutral-dark">Backend, DBs & Fullstack</span>
-              </div>
-            </div>
-          </div>
+    <div class="gap-12 lg:gap-16 grid lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] mt-14">
+      <div class="max-w-[65ch]">
+        <h3 class="font-semibold text-ink text-xl">Meine Geschichte</h3>
+        <div class="space-y-4 mt-4 text-ink-soft text-lg leading-relaxed">
+          <p>
+            Ich entdeckte meine Leidenschaft für die Informatik schon <strong class="font-semibold text-ink">im Alter von 11 Jahren</strong>,
+            als ich auf dem Laptop von meinem Vater meine ersten HTML-Seiten kreierte.
+            Mein Interesse für Technologie wurde geweckt und ich wollte meinen eigenen Computer haben.
+          </p>
+          <p>
+            Nach dem erfolgreichen Bau von meinem ersten PC wunderte ich mich, was man denn alles damit machen kann, und entdeckte die
+            Minecraft-Plugin-Entwicklung mit <strong class="font-semibold text-ink">Java</strong>. Ich konnte mich mit der Zeit immer besser mit Java vertraut machen
+            und begann bald Programme ausserhalb der Minecraft-Welt zu entwickeln.
+          </p>
+          <p>
+            Heute habe ich mehr als {experienceYears} Jahre Erfahrung als
+            angehender Applikationsentwickler und probiere laufend
+            neue Technologien aus. <strong class="font-semibold text-ink">Wobei ich Java treu geblieben bin!</strong>
+          </p>
         </div>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-ink text-xl">Auf einen Blick</h3>
+        <dl class="mt-4 border-line border-t">
+          <div class="flex justify-between gap-6 py-3 border-line border-b">
+            <dt class="text-muted">Alter</dt>
+            <dd class="font-medium text-ink text-right">{age} Jahre</dd>
+          </div>
+          <div class="flex justify-between gap-6 py-3 border-line border-b">
+            <dt class="text-muted">Erfahrung</dt>
+            <dd class="font-medium text-ink text-right">{experienceYears}+ Jahre</dd>
+          </div>
+          <div class="flex justify-between gap-6 py-3 border-line border-b">
+            <dt class="text-muted">Standort</dt>
+            <dd class="font-medium text-ink text-right">Kreuzlingen, Schweiz</dd>
+          </div>
+          <div class="flex justify-between gap-6 py-3 border-line border-b">
+            <dt class="text-muted">Fokus</dt>
+            <dd class="font-medium text-ink text-right">Backend, DBs & Fullstack</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </div>

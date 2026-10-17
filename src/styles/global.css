@@ -1,45 +1,56 @@
 @import "tailwindcss";
+@import "@fontsource-variable/schibsted-grotesk";
 @plugin "@tailwindcss/typography";
 
-@theme inline {
-  --color-primary: var(--color-blue-500);
-  --color-primary-hover: var(--color-blue-600);
-  --color-primary-light: var(--color-blue-400);
-  --color-secondary: var(--color-teal-500);
-  --color-secondary-hover: var(--color-teal-600);
-  --color-secondary-light: var(--color-teal-400);
-  --color-accent: var(--color-cyan-500);
-  --color-accent-light: var(--color-cyan-400);
-  --color-neutral: var(--color-slate-500);
-  --color-neutral-dark: var(--color-slate-600);
-  --color-neutral-darker: var(--color-slate-700);
-  --color-neutral-light: var(--color-slate-400);
-  --color-background-light: var(--color-slate-50);
-  --color-background-blue: var(--color-blue-50);
-  --color-background-cyan: var(--color-cyan-50);
+@theme {
+  --font-sans:
+    "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #15171c;
+  --color-ink-soft: #334155;
+  --color-muted: #52607a;
+  --color-line: #e3e6eb;
+  --color-paper: #ffffff;
+  --color-paper-2: #f6f6f4;
+  --color-accent: #1d4ed8;
+  --color-accent-hover: #1e3a8a;
 }
 
-@keyframes shimmer-divider {
-  0% {
-    background-position: -100% 0;
+@layer base {
+  html {
+    color: var(--color-ink);
+    background: var(--color-paper);
   }
-  100% {
-    background-position: 100% 0;
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 20%, transparent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
   }
 }
 
-.section-divider {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(148, 163, 184, 0.2) 15%,
-    rgba(100, 116, 139, 0.4) 40%,
-    rgba(71, 85, 105, 0.5) 50%,
-    rgba(100, 116, 139, 0.4) 60%,
-    rgba(148, 163, 184, 0.2) 85%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer-divider 8s ease-in-out infinite;
-  height: 1px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must override component animations */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must override component animations */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must override component animations */
+    transition-duration: 0.01ms !important;
+  }
 }

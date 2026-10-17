@@ -30,7 +30,7 @@ const ogImageUrl = new URL(ogImage.src, Astro.site);
 <html lang="de" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -43,7 +43,7 @@ const ogImageUrl = new URL(ogImage.src, Astro.site);
     <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#3b82f6" />
+    <meta name="theme-color" content="#ffffff" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
@@ -57,7 +57,7 @@ const ogImageUrl = new URL(ogImage.src, Astro.site);
     <title>{fullTitle}</title>
     <ClientRouter />
   </head>
-  <body class="flex flex-col bg-white min-h-screen">
+  <body class="flex flex-col bg-paper min-h-screen font-sans text-ink antialiased">
     <Navigation />
     <main class="flex-1">
       <slot />

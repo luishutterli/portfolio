@@ -8,42 +8,32 @@ const sortedProjects = await getSortedProjects();
 const featuredProjects = sortedProjects.slice(0, 6);
 ---
 
-<section class="px-4 lg:px-6 py-12">
-  <div class="mx-auto max-w-6xl">
-
-    <div class="mb-4 text-center">
-      <h2 
-        class="mb-2 font-bold text-slate-900 text-2xl lg:text-3xl"
-        transition:name="projects-heading"
-      >
-        Meine Projekte
-      </h2>
-      <p class="mx-auto max-w-2xl text-neutral text-base leading-relaxed">
-        Eine Auswahl meiner neuesten Arbeiten und Projekte. Von Full-Stack Entwicklung bis hin zu innovativen Lösungen.
-      </p>
-    </div>
-
-
-    <div class="gap-4 lg:gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-4">
-      {featuredProjects.map((project) => (
-        <div class="group hover:scale-105 transition-transform duration-300">
-          <ProjectCard project={project} />
-        </div>
-      ))}
-    </div>
-
-
-    <div class="text-center">
-      <a 
-        href="/projects" 
-        class="group inline-flex relative items-center gap-2 bg-linear-to-r from-neutral-dark hover:from-neutral-darker to-primary hover:to-primary-hover hover:shadow-primary-light/20 hover:shadow-xl px-8 py-4 rounded-xl font-semibold text-white hover:scale-105 transition-all duration-300"
+<section>
+  <div class="mx-auto px-4 lg:px-6 py-14 lg:py-20 max-w-6xl">
+    <div class="flex sm:flex-row flex-col justify-between sm:items-end gap-4">
+      <div>
+        <h2
+          class="font-semibold text-ink text-3xl lg:text-4xl tracking-tight"
+          transition:name="projects-heading"
+        >
+          Meine Projekte
+        </h2>
+        <p class="mt-3 text-muted text-lg">Eine Auswahl meiner neuesten Arbeiten.</p>
+      </div>
+      <a
+        href="/projects"
+        class="group inline-flex items-center gap-1.5 font-medium text-accent hover:text-accent-hover underline-offset-4 hover:underline"
         transition:name="view-all-projects"
       >
-        <span class="z-10 relative">Alle Projekte ansehen</span>
-        <Icon name="lucide:arrow-right" class="z-10 relative w-5 h-5 transition-transform group-hover:translate-x-1 duration-300" />
-
-        <div class="absolute inset-0 bg-linear-to-r from-secondary to-accent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+        Alle Projekte ansehen
+        <Icon name="lucide:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
       </a>
+    </div>
+
+    <div class="gap-x-8 gap-y-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-12">
+      {featuredProjects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
     </div>
   </div>
 </section>
