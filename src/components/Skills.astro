@@ -1,5 +1,6 @@
 ---
-import { skillsData, additionalTechnologies } from "../data/skills.ts";
+import { Icon } from "astro-icon/components";
+import { additionalTechnologies, skillsData } from "../data/skills.ts";
 ---
 
 <section class="py-12">
@@ -16,14 +17,12 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
 
 
     <div class="gap-6 grid grid-cols-1 lg:grid-cols-2">
-      {Object.entries(skillsData).map(([key, category]) => (
-        <div class="group bg-gradient-to-br from-white to-background-light hover:shadow-xl p-4 border border-neutral-light/30 hover:border-primary/30 rounded-2xl transition-all hover:-translate-y-2 duration-300">
+      {Object.values(skillsData).map((category) => (
+        <div class="group bg-linear-to-br from-white to-background-light hover:shadow-xl p-4 border border-neutral-light/30 hover:border-primary/30 rounded-2xl transition-all hover:-translate-y-2 duration-300">
 
           <div class="flex items-center gap-3 mb-4">
-            <div class="bg-gradient-to-br from-primary/10 to-secondary/10 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
-              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={category.icon}/>
-              </svg>
+            <div class="bg-linear-to-br from-primary/10 to-secondary/10 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
+              <Icon name={category.icon} class="w-5 h-5 text-primary" />
             </div>
             <h3 class="font-semibold text-slate-900 text-lg">{category.title}</h3>
           </div>
@@ -70,7 +69,7 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
           class={`tech-tag relative ${tech.tooltip ? "group cursor-help" : ""}`}
           style={`animation-delay: ${index * 0.1}s`}
         >
-          <span class="inline-block relative bg-linear-to-r from-slate-100 hover:from-primary/10 to-slate-200 hover:to-secondary/10 hover:shadow-md px-3 py-2 border border-slate-300 hover:border-primary/30 rounded-lg w-full font-medium text-slate-700 hover:text-primary text-sm text-center hover:scale-105 transition-all duration-300 transform">
+          <span class="inline-block relative bg-linear-to-r from-slate-100 hover:from-primary/10 to-slate-200 hover:to-secondary/10 hover:shadow-md px-3 py-2 border border-slate-300 hover:border-primary/30 rounded-lg w-full font-medium text-slate-700 hover:text-primary text-sm text-center hover:scale-105 transition-all duration-300">
             {tech.name}
             {tech.tooltip && (
               <span class="-top-1 -right-1 absolute bg-primary opacity-60 rounded-full w-2 h-2 animate-pulse"></span>
@@ -79,10 +78,10 @@ import { skillsData, additionalTechnologies } from "../data/skills.ts";
           
 
           {tech.tooltip && (
-            <div class="bottom-full left-1/2 z-10 absolute opacity-0 group-hover:opacity-100 mb-3 transition-opacity -translate-x-1/2 duration-300 pointer-events-none tooltip transform">
+            <div class="bottom-full left-1/2 z-10 absolute opacity-0 group-hover:opacity-100 mb-3 transition-opacity -translate-x-1/2 duration-300 pointer-events-none tooltip">
               <div class="bg-slate-800 shadow-lg px-3 py-2 rounded-lg text-white text-sm">
                 {tech.tooltip}
-                <div class="top-full left-1/2 absolute -translate-x-1/2 tooltip-arrow transform">
+                <div class="top-full left-1/2 absolute -translate-x-1/2 tooltip-arrow">
                   <div class="border-t-4 border-t-slate-800 border-r-4 border-r-transparent border-l-4 border-l-transparent"></div>
                 </div>
               </div>

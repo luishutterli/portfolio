@@ -1,30 +1,18 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getSortedProjects } from "../../lib/projects";
 
-const projects = await getCollection("projects");
-
-// Sort projects: featured first, then by state (Fertig first), then by start date
-const sortedProjects = projects.sort(
-  (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) => {
-    if (a.data.featured && !b.data.featured) return -1;
-    if (!a.data.featured && b.data.featured) return 1;
-
-    if (a.data.state === "Fertig" && b.data.state === "In Arbeit") return -1;
-    if (a.data.state === "In Arbeit" && b.data.state === "Fertig") return 1;
-
-    const aDate = a.data.startDate || new Date(0);
-    const bDate = b.data.startDate || new Date(0);
-    return bDate.getTime() - aDate.getTime();
-  },
-);
+const sortedProjects = await getSortedProjects();
 ---
 
-<Layout title="Projekte">
+<Layout
+  title="Projekte"
+  description="Eine Übersicht über die Projekte von Luis Hutterli, von aktuellen Arbeiten bis hin zu abgeschlossenen Projekten."
+>
   <div class="min-h-screen">
 
-    <section class="bg-gradient-to-br from-background-light via-background-blue to-background-cyan px-4 lg:px-6 pt-12 pb-6">
+    <section class="bg-linear-to-br from-background-light via-background-blue to-background-cyan px-4 lg:px-6 pt-12 pb-6">
       <div class="mx-auto max-w-6xl">
         <div class="mb-4 text-center">
           <h1 class="mb-2 font-bold text-slate-900 text-3xl lg:text-4xl" transition:name="page-title">
@@ -41,7 +29,7 @@ const sortedProjects = projects.sort(
     <section class="px-4 lg:px-6 py-8">
       <div class="mx-auto max-w-6xl">
         <div class="gap-4 lg:gap-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          {sortedProjects.map((project: CollectionEntry<"projects">) => (
+          {sortedProjects.map((project) => (
             <div class="group hover:scale-105 transition-transform duration-300">
               <ProjectCard project={project} />
             </div>

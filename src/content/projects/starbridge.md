@@ -1,7 +1,7 @@
 ---
 name: Starbridge | OBD-II Adapter
 description: "Ein OBD-II Adapter für Mercedes-Benz Fahrzeuge, der Telemetrie-Daten in Echtzeit an eine Mobile App überträgt. Entwickelt um der 3G-Netzabschaltung entgegenzuwirken."
-image: "/images/starbridge/starbridge-cover.png"
+image: "../../assets/projects/starbridge/starbridge-cover.png"
 tags: ["Expo (React-Native)", "CAN/OBD-II", "TypeScript", "C++ (ESP-IDF)", "PCB-Design", "Cloudflare Workers", "Cloudflare Durable Objects", "Docker", "Hono", "Tailwind CSS"]
 state: "Fertig"
 github: "https://github.com/luishutterli/starbridge"

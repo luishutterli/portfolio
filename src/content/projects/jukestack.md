@@ -1,7 +1,7 @@
 ---
 name: "JukeStack"
 description: "Eine moderne NFT-Jukebox als Fullstack Webanwendung."
-image: "/images/jukestack/jukestack-cover.png"
+image: "../../assets/projects/jukestack/jukestack-cover.png"
 tags: ["React", "TypeScript", "Java (vert.x)", "MySQL", "Docker", "Google Cloud Platform", "Cloudflare", "Tailwind CSS"]
 state: "Fertig"
 github: "https://github.com/luishutterli/jukestack"

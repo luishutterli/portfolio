@@ -1,8 +1,19 @@
 ---
-const age = Math.floor(
-  (Date.now() - new Date("2007-04-21").getTime()) / (365.25 * 24 * 60 * 60 * 1000),
-);
-const experienceYears = age - 11;
+const BIRTH_DATE = "2007-04-21";
+const START_AGE = 11;
+
+function calcAge(now = new Date()) {
+  const birth = new Date(BIRTH_DATE);
+  let years = now.getUTCFullYear() - birth.getUTCFullYear();
+  const beforeBirthday =
+    now.getUTCMonth() < birth.getUTCMonth() ||
+    (now.getUTCMonth() === birth.getUTCMonth() && now.getUTCDate() < birth.getUTCDate());
+  if (beforeBirthday) years--;
+  return years;
+}
+
+const age = calcAge();
+const experienceYears = age - START_AGE;
 const terminalConfig = {
   command: "whoami",
   responses: [
@@ -29,7 +40,7 @@ const terminalConfig = {
       </h2>
     </div>
 
-    <div class="mx-auto mb-4 max-w-3xl">
+    <div class="mx-auto mb-4 max-w-3xl" data-terminal={JSON.stringify(terminalConfig)}>
       <div class="bg-slate-900 shadow-2xl rounded-lg overflow-hidden">
         <div class="flex items-center gap-2 bg-slate-800 px-4 py-3">
           <div class="flex gap-2">
@@ -107,59 +118,76 @@ const terminalConfig = {
   </div>
 </section>
 
-<script define:vars={{ terminalConfig }}>
-  document.addEventListener("astro:page-load", function() {
+<script>
+  interface TerminalConfig {
+    command: string;
+    responses: string[];
+    speeds: {
+      command: number;
+      typing: number;
+      deleting: number;
+      pauseAfterType: number;
+      pauseAfterDelete: number;
+      initialDelay: number;
+    };
+  }
+
+  let timer: number | undefined;
+
+  function startTerminal() {
+    const root = document.querySelector<HTMLElement>("[data-terminal]");
     const commandElement = document.getElementById("command");
     const responseElement = document.getElementById("response");
-    
-    if (!commandElement || !responseElement) return;
-    
-    const { command, responses, speeds } = terminalConfig;
-    
+    if (!root?.dataset.terminal || !commandElement || !responseElement) return;
+
+    const config: TerminalConfig = JSON.parse(root.dataset.terminal);
+    const { command, responses, speeds } = config;
+
     let commandIndex = 0;
     let responseIndex = 0;
     let currentResponseIndex = 0;
     let isDeleting = false;
-    
+
+    const later = (fn: () => void, ms: number) => {
+      timer = window.setTimeout(fn, ms);
+    };
+
     function typeCommand() {
-      if (!commandElement) return;
-      
       if (commandIndex < command.length) {
-        commandElement.textContent += command.charAt(commandIndex);
+        commandElement!.textContent += command.charAt(commandIndex);
         commandIndex++;
-        setTimeout(typeCommand, speeds.command);
+        later(typeCommand, speeds.command);
       } else {
-        setTimeout(() => {
-          typeResponse();
-        }, speeds.pauseAfterType);
+        later(typeResponse, speeds.pauseAfterType);
       }
     }
-    
+
     function typeResponse() {
-      if (!responseElement) return;
-      
       const currentResponse = responses[currentResponseIndex];
-      
+
       if (!isDeleting && responseIndex < currentResponse.length) {
-        responseElement.textContent += currentResponse.charAt(responseIndex);
+        responseElement!.textContent += currentResponse.charAt(responseIndex);
         responseIndex++;
-        setTimeout(typeResponse, speeds.typing);
-      } else if (!isDeleting && responseIndex === currentResponse.length) {
-        setTimeout(() => {
+        later(typeResponse, speeds.typing);
+      } else if (!isDeleting) {
+        later(() => {
           isDeleting = true;
           typeResponse();
         }, speeds.pauseAfterType);
-      } else if (isDeleting && responseIndex > 0) {
-        responseElement.textContent = currentResponse.substring(0, responseIndex - 1);
+      } else if (responseIndex > 0) {
+        responseElement!.textContent = currentResponse.substring(0, responseIndex - 1);
         responseIndex--;
-        setTimeout(typeResponse, speeds.deleting);
-      } else if (isDeleting && responseIndex === 0) {
+        later(typeResponse, speeds.deleting);
+      } else {
         isDeleting = false;
         currentResponseIndex = (currentResponseIndex + 1) % responses.length;
-        setTimeout(typeResponse, speeds.pauseAfterDelete);
+        later(typeResponse, speeds.pauseAfterDelete);
       }
     }
-    
-    setTimeout(typeCommand, speeds.initialDelay);
-  });
+
+    later(typeCommand, speeds.initialDelay);
+  }
+
+  document.addEventListener("astro:before-swap", () => window.clearTimeout(timer));
+  document.addEventListener("astro:page-load", startTerminal);
 </script>

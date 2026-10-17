@@ -1,7 +1,7 @@
 ---
 name: "swisscounts.ch | Buchhaltung & (AuthKit)"
 description: "Ein modernes, open-source Buchhaltungssystem für kleine Unternehmen"
-image: "/images/swisscounts/swisscounts-cover.webp"
+image: "../../assets/projects/swisscounts/swisscounts-cover.webp"
 tags: ["React", "TypeScript", "Docker", "AuthKit", "Hono", "Tailwind CSS"]
 state: "In Arbeit"
 github: "https://github.com/luishutterli/swisscounts"

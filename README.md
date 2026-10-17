@@ -1,7 +1,7 @@
 
 # Portfolio Website
 
-![Portfolio Cover](public/images/portfolio/portfolio-cover.png)
+![Portfolio Cover](src/assets/projects/portfolio/portfolio-cover.png)
 
 Persönliches Portfolio gebaut mit [Astro](https://astro.build/)
 

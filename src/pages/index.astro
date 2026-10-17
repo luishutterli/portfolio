@@ -1,15 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
 import AboutMe from "../components/AboutMe.astro";
-import Skills from "../components/Skills.astro";
+import Hero from "../components/Hero.astro";
 import ProjectsGallery from "../components/ProjectsGallery.astro";
+import Skills from "../components/Skills.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
   <Hero />
   <div class="border-neutral-light/50 border-b-2"></div>
-  <section class="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 overflow-hidden">
+  <section class="relative bg-linear-to-br from-blue-50 via-indigo-50 to-purple-100 overflow-hidden">
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
 
     <div class="top-10 left-10 absolute bg-linear-to-r from-blue-400/15 to-purple-500/15 blur-3xl rounded-full w-96 h-96"></div>

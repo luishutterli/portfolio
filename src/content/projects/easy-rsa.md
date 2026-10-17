@@ -1,7 +1,7 @@
 ---
 name: "Easy-RSA"
 description: "Interaktive Lernplattform für den RSA-Algorithmus mit Quizzen, interaktiven Visualisierungen und noch viel mehr"
-image: "/images/easy-rsa/easy-rsa-cover.png"
+image: "../../assets/projects/easy-rsa/easy-rsa-cover.png"
 tags: ["React", "Markdown", "JavaScript", "Tailwind CSS"]
 state: "Fertig"
 github: "https://github.com/luishutterli/iweb-rsa"

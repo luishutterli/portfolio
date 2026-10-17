@@ -1,8 +1,20 @@
 {
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "files": {
+    "includes": [
+      "**",
+      "!dist",
+      "!.astro",
+      "!node_modules",
+      "!bun.lock",
+      "!.impeccable",
+      "!public"
+    ]
+  },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "preset": "recommended"
     }
   },
   "formatter": {
@@ -23,11 +35,7 @@
   },
   "overrides": [
     {
-      "includes": [
-        "**/*.svelte",
-        "**/*.astro",
-        "**/*.vue"
-      ],
+      "includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
       "linter": {
         "rules": {
           "style": {
@@ -41,5 +49,10 @@
         }
       }
     }
-  ]
+  ],
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  }
 }

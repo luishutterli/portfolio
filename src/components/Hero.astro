@@ -1,12 +1,13 @@
 ---
+import { Icon } from "astro-icon/components";
 ---
 
-<section class="relative flex justify-center items-center bg-gradient-to-br from-background-light via-background-blue to-background-cyan min-h-[55vh] overflow-hidden text-gray-800 text-center">
+<section class="relative flex justify-center items-center bg-linear-to-br from-background-light via-background-blue to-background-cyan min-h-[55vh] overflow-hidden text-gray-800 text-center">
 
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <div class="top-20 left-10 absolute bg-linear-to-r from-primary-light/25 blur-xl rounded-full w-32 h-32 animate-pulse to-accent-light/25"></div>
     <div class="right-10 bottom-20 absolute bg-linear-to-r from-secondary-light/25 to-emerald-200/25 blur-xl rounded-full w-48 h-48 animate-pulse" style="animation-delay: 1s;"></div>
-    <div class="top-1/2 left-1/2 absolute bg-linear-to-r from-background-light/20 to-background-blue/20 blur-2xl rounded-full w-96 h-96 -translate-x-1/2 -translate-y-1/2 animate-pulse transform" style="animation-delay: 2s;"></div>
+    <div class="top-1/2 left-1/2 absolute bg-linear-to-r from-background-light/20 to-background-blue/20 blur-2xl rounded-full w-96 h-96 -translate-x-1/2 -translate-y-1/2 animate-pulse" style="animation-delay: 2s;"></div>
   </div>
   
   <div class="z-10 relative mx-auto px-8 container">
@@ -26,23 +27,11 @@
     <div class="flex sm:flex-row flex-col justify-center items-center gap-4 animate-fade-in-up" style="animation-delay: 0.6s;">
       <a 
         href="/projects" 
-        class="group inline-flex relative items-center gap-2 bg-linear-to-r from-neutral-dark hover:from-neutral-darker to-primary hover:to-primary-hover hover:shadow-primary-light/20 hover:shadow-xl px-8 py-4 rounded-xl font-semibold text-white hover:scale-105 transition-all duration-300 transform"
+        class="group inline-flex relative items-center gap-2 bg-linear-to-r from-neutral-dark hover:from-neutral-darker to-primary hover:to-primary-hover hover:shadow-primary-light/20 hover:shadow-xl px-8 py-4 rounded-xl font-semibold text-white hover:scale-105 transition-all duration-300"
         transition:name="hero-cta"
       >
         <span class="z-10 relative">Projekte ansehen</span>
-        <svg 
-          class="z-10 relative w-5 h-5 transition-transform group-hover:translate-x-1 duration-300" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path 
-            stroke-linecap="round" 
-            stroke-linejoin="round" 
-            stroke-width="2" 
-            d="M13 7l5 5m0 0l-5 5m5-5H6"
-          />
-        </svg>
+        <Icon name="lucide:arrow-right" class="z-10 relative w-5 h-5 transition-transform group-hover:translate-x-1 duration-300" />
 
         <div class="absolute inset-0 bg-linear-to-r from-secondary to-accent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
       </a>

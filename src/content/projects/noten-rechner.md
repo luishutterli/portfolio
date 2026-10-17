@@ -1,7 +1,7 @@
 ---
 name: "Noten Rechner"
 description: "Ein online Notenbuch für Schüler mit Abo-Modell. Hauptsächlich für meine Mittschüler und mich."
-image: "/images/noten-rechner/noten-rechner-cover.png"
+image: "../../assets/projects/noten-rechner/noten-rechner-cover.png"
 tags: ["React", "Stripe", "Firebase Firestore", "Firebase Auth", "JavaScript", "Tailwind CSS", "Recharts"]
 state: "Fertig"
 github: "https://github.com/luishutterli/noten"
