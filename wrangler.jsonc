@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2026-10-17",
+  "workers_dev": false,
+  "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "luishutterli.ch",
+      "custom_domain": true
+    },
+  ],
+  "assets": {
+    "directory": "./dist"
+  }
+}

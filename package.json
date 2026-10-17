@@ -27,6 +27,7 @@
     "@iconify-json/lucide": "^1.2.145",
     "@iconify-json/simple-icons": "^1.2.100",
     "@tailwindcss/typography": "^0.5.20",
-    "typescript": "6"
+    "typescript": "6",
+    "wrangler": "^4.151.1"
   }
 }
