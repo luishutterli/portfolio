@@ -1,4 +1,3 @@
-
 export interface Technology {
   name: string;
   usedIn: string[];

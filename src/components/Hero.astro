@@ -1,28 +1,45 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const proofLink =
+  "font-medium text-ink underline decoration-ink/25 decoration-2 underline-offset-4 hover:decoration-accent hover:text-accent transition-colors";
 ---
 
 <section class="border-line border-b">
-  <div class="mx-auto px-4 lg:px-6 pt-14 lg:pt-28 pb-12 lg:pb-20 max-w-6xl">
+  <div class="mx-auto px-4 lg:px-6 pt-14 lg:pt-24 pb-12 lg:pb-16 max-w-6xl">
     <h1
       class="font-semibold text-ink text-5xl lg:text-7xl tracking-[-0.03em]"
       transition:name="hero-title"
     >
       Luis Hutterli
     </h1>
-    <p class="mt-4 font-medium text-ink-soft text-xl lg:text-2xl">
+    <p class="mt-3 font-medium text-ink-soft text-xl lg:text-2xl">
       Angehender Applikationsentwickler EFZ
     </p>
-    <p class="mt-6 max-w-[52ch] text-muted text-lg leading-relaxed">
-      Leidenschaftlich für moderne Technologien. Auf dem Weg zum Applikationsentwickler mit Fokus auf Backend-Entwicklung.
+    <p class="mt-8 max-w-[58ch] text-ink-soft text-lg lg:text-xl leading-relaxed">
+      Ich entwickle Software von Grund auf, mit Fokus auf Backend:
+      <a href="/projects/starbridge" class={proofLink}>Starbridge</a>, ein OBD-II-Adapter mit eigener Platine, App und Cloud-Backend;
+      <a href="/projects/noten-rechner" class={proofLink}>Noten Rechner</a>, eine Web-App mit Abo-Modell, für die meine Mitschüler bezahlen;
+      und <a href="/projects/swisscounts" class={proofLink}>swisscounts.ch</a>, eine Open-Source-Buchhaltung für kleine Unternehmen.
     </p>
-    <a
-      href="/projects"
-      class="group inline-flex items-center gap-2 bg-ink hover:bg-accent mt-10 px-6 py-3 rounded-md font-medium text-paper transition-colors"
-      transition:name="hero-cta"
-    >
-      Projekte ansehen
-      <Icon name="lucide:arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-    </a>
+    <div class="flex flex-wrap items-center gap-x-8 gap-y-4 mt-10">
+      <a
+        href="#projects"
+        class="group inline-flex items-center gap-2 bg-ink hover:bg-accent px-6 py-3 rounded-md font-medium text-paper transition-colors"
+        transition:name="hero-cta"
+      >
+        Projekte ansehen
+        <Icon name="lucide:arrow-down" class="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+      </a>
+      <a
+        href="https://github.com/luishutterli"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 py-3 font-medium text-ink hover:text-accent transition-colors"
+      >
+        <Icon name="simple-icons:github" class="w-4 h-4" />
+        GitHub-Profil
+      </a>
+    </div>
   </div>
 </section>

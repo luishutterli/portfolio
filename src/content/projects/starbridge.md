@@ -11,7 +11,7 @@ endDate: 2026-02-20
 ---
 
 # Starbridge | OBD-II Adapter
-Starbridge ist meine Semesterarbeit an der IMS Kantonsschule Frauenfeld, die ich wärend des 3. Jahres meiner Ausbildung realisert habe.
+Starbridge ist meine Semesterarbeit an der IMS Kantonsschule Frauenfeld, die ich während des 3. Jahres meiner Ausbildung realisiert habe.
 
 Dabei handelt es sich um einen selbst entwickelten OBD-II Adapter für Mercedes-Benz Fahrzeuge, der Telemetrie-Daten über den CAN-Bus abfragt und diese in Echtzeit an eine eigene Mobile App überträgt.
 
@@ -25,14 +25,14 @@ Die Idee hinter diesem Projekt kam, als die Swisscom angekündigt hat, dass sie 
 - **Verwaltung von verschiedenen Fahrzeugen**
 - **Übersicht über die letzte Fahrt mit informativen Visualisierungen** *bspw. Verbrauch über die Fahrt, Geschwindigkeit über die Fahrt*
 - **Modernes und ansprechendes Design**
-- **Fahzeug-Erkennung via VIN-Nummer** *VIN = Fahrgestellnummer*
+- **Fahrzeug-Erkennung via VIN-Nummer** *VIN = Fahrgestellnummer*
 - **Profilverwaltung mit Benutzerkonten** *+ Möglichkeit des Teilen von Fahrzeugen*
 
 *...usw*
 
 ## Architektur
 ### Komponenten
-![Grundlegende Architetktur](/images/starbridge/architecture.png)
+![Grundlegende Architektur](/images/starbridge/architecture.png)
 
 ### Cloud- & Backend-Architektur
 ![Cloud-Architektur](/images/starbridge/production-env.png)

@@ -1,6 +1,6 @@
 ---
 name: "Noten Rechner"
-description: "Ein online Notenbuch für Schüler mit Abo-Modell. Hauptsächlich für meine Mittschüler und mich."
+description: "Ein online Notenbuch für Schüler mit Abo-Modell. Hauptsächlich für meine Mitschüler und mich."
 image: "../../assets/projects/noten-rechner/noten-rechner-cover.png"
 tags: ["React", "Stripe", "Firebase Firestore", "Firebase Auth", "JavaScript", "Tailwind CSS", "Recharts"]
 state: "Fertig"
@@ -14,19 +14,19 @@ endDate: 2024-10-26
 ---
 
 # Noten Rechner
-Da wir unsere Noten selbst verwalten müssen, um einen Überblick zu haben, habe ich in den ersten Semestern jeweils eine Excel-Tabelle erstellt. Diese Tabelle hat zwar sehr gut funktioniert und ich habe sie auch immer angepasst und meinen Mittschülern zur Verfügung gestellt, aber ich wollte doch etwas, das komfortabler ist und schöner aussieht. So ist mir die Idee für eine Web-App gekommen.
+Da wir unsere Noten selbst verwalten müssen, um einen Überblick zu haben, habe ich in den ersten Semestern jeweils eine Excel-Tabelle erstellt. Diese Tabelle hat zwar sehr gut funktioniert und ich habe sie auch immer angepasst und meinen Mitschülern zur Verfügung gestellt, aber ich wollte doch etwas, das komfortabler ist und schöner aussieht. So ist mir die Idee für eine Web-App gekommen.
 
 Das Projekt war für mich der erste Berührungspunkt mit der Firebase Firestore NoSQL-Datenbank und Stripe als Zahlungsanbieter. Ich habe mich für Firebase entschieden, da ich die Firebase Platform bereits verwendete und sie sehr kostengünstig ist. Durch das Github-Education-Programm habe ich auch einen Rabatt auf Zahlungsgebühren bei Stripe erhalten.
 
 ## Abo Modell
-Meine Mittschüler müssen für die Nutzung der Applikation bezahlen, da ich einige Kosten decken muss. Ich habe jedoch versucht, die Kosten sehr gering zu halten.
+Meine Mitschüler müssen für die Nutzung der Applikation bezahlen, da ich einige Kosten decken muss. Ich habe jedoch versucht, die Kosten sehr gering zu halten.
 Hier ist eine Übersicht über die zwei Preis Optionen:
 1. **Jährliches Abo**: 10 Fr. pro Jahr
 2. **Monatliches Abo**: 1.25 Fr. pro Monat (15 Fr. pro Jahr)
 
 Zudem habe ich jedem Nutzer 5 Tage als Testphase gegeben und denen, die sich direkt am Anfang angemeldet haben, ein Abo für nur 1 Fr. pro Monat für die ersten 4 Monate.
 
-Diese Abonemente werden über Stripe erstellt und verwaltet. Für die Einbindung in meine Applikation verwende ich hier die Stripe-Erweiterung für Firebase von Invertase.
+Diese Abonnemente werden über Stripe erstellt und verwaltet. Für die Einbindung in meine Applikation verwende ich hier die Stripe-Erweiterung für Firebase von Invertase.
 
 ## Berechnungen & Durchschnitt
 Das Schema der Daten ist sehr ausgeklügelt und erlaubt es, sehr komplexe Durchschnitte zu berechnen, ohne die Applikation anzupassen.

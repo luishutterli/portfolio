@@ -3,10 +3,11 @@ import { Image } from "astro:assets";
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
-import { formatDate } from "../../lib/projects";
+import { formatPeriod, splitLinkTitle, warnAboutCover } from "../../lib/projects";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
+  projects.forEach(warnAboutCover);
   return projects.map((project) => ({
     params: { slug: project.id },
     props: { project },
@@ -19,6 +20,12 @@ interface Props {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+const period = formatPeriod(project.data.startDate, project.data.endDate);
+const links = project.data.links.map((link) => ({
+  url: link.url,
+  ...splitLinkTitle(link.title),
+}));
+const hasLinks = Boolean(project.data.github || links.length > 0);
 ---
 
 <Layout
@@ -29,97 +36,97 @@ const { Content } = await render(project);
   <article class="mx-auto px-4 lg:px-6 pt-8 pb-20 max-w-6xl">
     <a
       href="/projects"
-      class="group inline-flex items-center gap-1.5 font-medium text-muted hover:text-ink text-sm"
+      class="group inline-flex items-center gap-1.5 py-1 font-medium text-muted hover:text-ink text-sm"
     >
       <Icon name="lucide:chevron-left" class="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
       Zurück zu allen Projekten
     </a>
 
+    <header class="gap-x-16 gap-y-10 grid lg:grid-cols-[minmax(0,1fr)_20rem] mt-8 lg:mt-12">
+      <div>
+        <h1
+          class="font-semibold text-ink text-4xl lg:text-5xl tracking-tight text-balance"
+          transition:name={`project-title-${project.id}`}
+        >
+          {project.data.name}
+        </h1>
+        <p class="mt-5 max-w-[60ch] text-ink-soft text-xl leading-relaxed">
+          {project.data.description}
+        </p>
+
+        {hasLinks && (
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8">
+            {project.data.github && (
+              <a
+                href={project.data.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-ink hover:bg-accent px-5 py-2.5 rounded-md font-medium text-paper transition-colors"
+              >
+                <Icon name="simple-icons:github" class="w-4 h-4" />
+                Code auf GitHub
+              </a>
+            )}
+            {links.map((link) => (
+              <span class="inline-flex flex-wrap items-baseline gap-x-2">
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 py-2.5 font-medium text-ink hover:text-accent transition-colors"
+                >
+                  {link.label}
+                  <Icon name="lucide:arrow-up-right" class="w-4 h-4" />
+                </a>
+                {link.note && <span class="text-muted text-sm">{link.note}</span>}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <dl class="self-start border-ink border-t text-sm">
+        <div class="py-3 border-line border-b">
+          <dt class="text-muted">Status</dt>
+          <dd class="mt-1 font-medium text-ink">{project.data.state}</dd>
+        </div>
+        {period && (
+          <div class="py-3 border-line border-b">
+            <dt class="text-muted">Zeitraum</dt>
+            <dd class="mt-1 font-medium text-ink">{period}</dd>
+          </div>
+        )}
+        {project.data.tags.length > 0 && (
+          <div class="py-3 border-line border-b">
+            <dt class="text-muted">Technologien</dt>
+            <dd class="mt-1 text-ink leading-relaxed">{project.data.tags.join(" · ")}</dd>
+          </div>
+        )}
+      </dl>
+    </header>
+
     {project.data.image && (
-      <div class="bg-paper-2 mt-6 border border-line rounded-md overflow-hidden">
+      <div class="bg-paper-2 mx-auto mt-12 border border-line rounded-md max-w-4xl overflow-hidden">
         <Image
           src={project.data.image}
           alt=""
-          widths={[640, 1024, 1536]}
-          sizes="(min-width: 1152px) 1144px, 100vw"
+          widths={[640, 896, 1280, 1792]}
+          sizes="(min-width: 944px) 896px, calc(100vw - 2rem)"
           loading="eager"
           fetchpriority="high"
-          class="w-full object-cover aspect-video"
+          class="w-full object-contain aspect-video"
           transition:name={`project-image-${project.id}`}
         />
       </div>
     )}
 
-    <header class="mx-auto mt-10 max-w-[68ch]">
-      <h1 class="font-semibold text-ink text-4xl lg:text-5xl tracking-tight text-balance" transition:name={`project-title-${project.id}`}>
-        {project.data.name}
-      </h1>
-      <p class="mt-4 text-ink-soft text-xl leading-relaxed">
-        {project.data.description}
-      </p>
-      <p class="mt-4 text-muted text-sm">
-        {project.data.state} · {project.data.tags.slice(0, 3).join(" · ")}
-        {project.data.tags.length > 3 && (
-          <>
-            {" · "}
-            <a href="#technologies-used-list" class="hover:text-ink underline">
-              +{project.data.tags.length - 3} mehr
-            </a>
-          </>
-        )}
-      </p>
-    </header>
-
-    <div class="mx-auto mt-12 pt-10 border-line border-t max-w-[68ch] prose prose-slate prose-lg prose-a:text-accent prose-headings:tracking-tight prose-code:bg-paper-2 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none [&>h1:first-child]:hidden">
+    <div
+      class:list={[
+        "mx-auto mt-14 max-w-[68ch] prose prose-slate prose-lg prose-a:text-accent prose-headings:tracking-tight prose-code:bg-paper-2 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none [&>h1:first-child]:hidden",
+        !project.data.image && "pt-10 border-line border-t",
+      ]}
+    >
       <Content />
-    </div>
-
-    <div class="gap-10 grid md:grid-cols-3 mx-auto mt-16 pt-10 border-line border-t max-w-[68ch] md:max-w-none">
-      <div id="technologies-used-list">
-        <h2 class="font-semibold text-ink">Technologien</h2>
-        <p class="mt-3 text-ink-soft leading-relaxed">{project.data.tags.join(" · ")}</p>
-      </div>
-
-      <div>
-        <h2 class="font-semibold text-ink">Links</h2>
-        <ul class="space-y-2 mt-3">
-          {project.data.github && (
-            <li>
-              <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-accent hover:text-accent-hover hover:underline">
-                <Icon name="simple-icons:github" class="w-4 h-4" />
-                GitHub
-              </a>
-            </li>
-          )}
-          {project.data.links.map((link) => (
-            <li>
-              <a href={link.url} target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover hover:underline">
-                {link.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {(project.data.startDate || project.data.endDate) && (
-        <div>
-          <h2 class="font-semibold text-ink">Timeline</h2>
-          <dl class="space-y-2 mt-3">
-            {project.data.startDate && (
-              <div class="flex gap-3">
-                <dt class="w-28 text-muted">Gestartet</dt>
-                <dd class="tabular-nums text-ink-soft">{formatDate(project.data.startDate)}</dd>
-              </div>
-            )}
-            {project.data.endDate && (
-              <div class="flex gap-3">
-                <dt class="w-28 text-muted">Abgeschlossen</dt>
-                <dd class="tabular-nums text-ink-soft">{formatDate(project.data.endDate)}</dd>
-              </div>
-            )}
-          </dl>
-        </div>
-      )}
     </div>
   </article>
 </Layout>

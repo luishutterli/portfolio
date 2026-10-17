@@ -20,6 +20,12 @@
   html {
     color: var(--color-ink);
     background: var(--color-paper);
+    scrollbar-color: #c3c8d1 var(--color-paper);
+    caret-color: var(--color-accent);
+  }
+
+  main:focus {
+    outline: none;
   }
 
   ::selection {

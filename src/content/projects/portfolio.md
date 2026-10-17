@@ -25,7 +25,7 @@ Diese Kombination aus statischer Generierung und on-edge Hosting sorgt für dies
 *(Google PageSpeed Insights: [Report](https://pagespeed.web.dev/analysis/https-luishutterli-ch/1n9n80f15a?form_factor=mobile))*
 
 ### Content Collections
-Die Projekte sind einfache Markdown-Dateien, die durch die Astro Content Collections wärend der Buid-Zeit zu statischen HTML-Seiten gerendert werden.
+Die Projekte sind einfache Markdown-Dateien, die durch die Astro Content Collections während der Buid-Zeit zu statischen HTML-Seiten gerendert werden.
 
 Aktuell liegen diese Projekte einfach in einem Ordner und werden mit dem `glob`-Loader geladen, jedoch könnte man hier auch andere Loader verwenden, um die Projekte von anderen Orten zu laden, wie z.B. von einem CMS oder aus Notion. *(Hier als Beispiel, [diese Seite in Markdown-Form](https://github.com/luishutterli/portfolio/blob/master/src/content/projects/portfolio.md))*
 
