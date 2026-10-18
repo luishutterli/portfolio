@@ -36,4 +36,4 @@ View Transitions ermöglichen einerseits eine komplette Client-Side Navigation, 
 
 Solche Animationen finden sich zum Beispiel hier zwischen den Projektseiten, wo die Projekt-Bilder und Titel in die nächste Seite animiert werden.
 
-**Um von diesen Funktionen Gebrauch zu machen, braucht man eine aktuelle Version eines nicht Firefox-basierten Browsers.** *(mehr Details: [MDN Web Docs - View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API#browser_compatibility))*
+*(mehr Details: [MDN Web Docs - View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API))*
