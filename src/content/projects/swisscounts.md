@@ -17,7 +17,7 @@ startDate: 2025-04-01
 # swisscounts.ch | Buchhaltung & (AuthKit)
 Swisscounts entstand ursprünglich als ein Nachfolger für das massgeschneiderte [Hautkult Buchhaltungssystem](/projects/hautkult), das ich für einen Kunden entwickelt habe.
 
-Der Fokus von swisscounts lag jedoch schon von Anfang an auf eine modulare und flexible Architektur, die dafür ausgelegt ist, von verschiedenen Kunden genutzt zu werden.
+Der Fokus von swisscounts lag jedoch schon von Anfang an auf einer modularen und flexiblen Architektur, die dafür ausgelegt ist, von verschiedenen Kunden genutzt zu werden.
 Einer der grössten Unterschiede ist, dass swisscounts eine Webanwendung ist und nicht mehr eine Desktop-Applikation.
 
 ## Funktionen
@@ -26,14 +26,14 @@ Einer der grössten Unterschiede ist, dass swisscounts eine Webanwendung ist und
 - **Benutzerverwaltung (eine Organisation mit mehreren Benutzern und Rollen)**
 - **Kundenverwaltung als Kundenstamm**
 - **Verwaltung von Gutscheinen (Rabatte oder Geschenkkarten)**
-- **Verwaltung von Produkten/Dienstleistungen usw. (Modulares und Konfigurierbares "Inventar")**
+- **Verwaltung von Produkten/Dienstleistungen usw. (modulares und konfigurierbares "Inventar")**
 - **Verwaltung von Rechnungen (Erstellen usw.)**
   - **PDF-Export & Druck (mögl. E-Mail-Versand)**
   - **Zahlungsstatus**
 - **Verwaltung von Ausgaben (in verschiedenen Kategorien)**
 - **Einfache Buchhaltung (Einnahmen/Ausgaben ...)**
   - **Als Dashboard und Download**
-  - *mögl. Doppelte Buchhaltung (Buchungssätze)*
+  - *mögl. doppelte Buchhaltung (Buchungssätze)*
 
 Es sind viele weitere Funktionen nach dem MVP geplant. Technisch gesehen werden einige dieser Funktionen als separate "Module" implementiert, ein Beispiel für ein solches Modul wäre die Anbindung an einen Zahlungsdienstleister, um Rechnungen direkt zu bezahlen.
 

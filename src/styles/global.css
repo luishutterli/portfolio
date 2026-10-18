@@ -1,10 +1,8 @@
 @import "tailwindcss";
-@import "@fontsource-variable/schibsted-grotesk";
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans:
-    "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-schibsted-grotesk);
 
   --color-ink: #15171c;
   --color-ink-soft: #334155;

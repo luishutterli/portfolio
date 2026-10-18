@@ -45,12 +45,12 @@ const hasLinks = Boolean(project.data.github || links.length > 0);
     <div class="gap-x-16 gap-y-10 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_20rem] mt-8 lg:mt-12">
       <header class="lg:col-start-1">
         <h1
-          class="font-semibold text-ink text-4xl lg:text-5xl tracking-tight text-balance break-words hyphens-auto"
+          class="font-semibold text-ink text-4xl lg:text-5xl break-words text-balance tracking-tight hyphens-auto"
           transition:name={`project-title-${project.id}`}
         >
           {project.data.name}
         </h1>
-        <p class="mt-5 max-w-[60ch] text-ink-soft text-xl break-words hyphens-auto leading-relaxed">
+        <p class="mt-5 max-w-[60ch] text-ink-soft text-xl break-words leading-relaxed hyphens-auto">
           {project.data.description}
         </p>
 
@@ -85,7 +85,7 @@ const hasLinks = Boolean(project.data.github || links.length > 0);
         )}
       </header>
 
-      <dl class="lg:top-24 lg:sticky lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto self-start border-ink border-t text-sm break-words">
+      <dl class="lg:top-24 lg:sticky self-start lg:col-start-2 lg:row-span-3 lg:row-start-1 border-ink border-t lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto text-sm break-words">
         <div class="py-3 border-line border-b">
           <dt class="text-muted">Status</dt>
           <dd class="mt-1 font-medium text-ink">{project.data.state}</dd>
@@ -121,7 +121,7 @@ const hasLinks = Boolean(project.data.github || links.length > 0);
 
     <div
       class:list={[
-        "lg:col-start-1 mt-4 max-w-[68ch] break-words proseprose-slate prose-lg prose-a:text-accent prose-headings:tracking-tight prose-code:bg-paper-2 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none [&>h1:first-child]:hidden",
+        "lg:col-start-1 mt-4 max-w-[68ch] wrap-break-word prose prose-slate prose-lg prose-a:text-accent prose-headings:tracking-tight prose-code:bg-paper-2 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none [&>h1:first-child]:hidden",
         !project.data.image && "pt-10 border-line border-t",
       ]}
     >

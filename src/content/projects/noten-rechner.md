@@ -1,13 +1,10 @@
 ---
 name: "Noten Rechner"
-description: "Ein online Notenbuch für Schüler mit Abo-Modell. Hauptsächlich für meine Mitschüler und mich."
+description: "Ein Online-Notenbuch für Schüler mit Abo-Modell. Hauptsächlich für meine Mitschüler und mich."
 image: "../../assets/projects/noten-rechner/noten-rechner-cover.png"
 tags: ["React", "Stripe", "Firebase Firestore", "Firebase Auth", "JavaScript", "Tailwind CSS", "Recharts"]
 state: "Fertig"
 github: "https://github.com/luishutterli/noten"
-links:
-  - title: "Live Demo"
-    url: "https://noten-rechner.ch/"
 featured: true
 startDate: 2024-06-22
 endDate: 2024-10-26
@@ -16,11 +13,11 @@ endDate: 2024-10-26
 # Noten Rechner
 Da wir unsere Noten selbst verwalten müssen, um einen Überblick zu haben, habe ich in den ersten Semestern jeweils eine Excel-Tabelle erstellt. Diese Tabelle hat zwar sehr gut funktioniert und ich habe sie auch immer angepasst und meinen Mitschülern zur Verfügung gestellt, aber ich wollte doch etwas, das komfortabler ist und schöner aussieht. So ist mir die Idee für eine Web-App gekommen.
 
-Das Projekt war für mich der erste Berührungspunkt mit der Firebase Firestore NoSQL-Datenbank und Stripe als Zahlungsanbieter. Ich habe mich für Firebase entschieden, da ich die Firebase Platform bereits verwendete und sie sehr kostengünstig ist. Durch das Github-Education-Programm habe ich auch einen Rabatt auf Zahlungsgebühren bei Stripe erhalten.
+Das Projekt war für mich der erste Berührungspunkt mit der Firebase Firestore NoSQL-Datenbank und Stripe als Zahlungsanbieter. Ich habe mich für Firebase entschieden, da ich die Firebase-Plattform bereits verwendete und sie sehr kostengünstig ist. Durch das GitHub-Education-Programm habe ich auch einen Rabatt auf Zahlungsgebühren bei Stripe erhalten.
 
 ## Abo Modell
 Meine Mitschüler müssen für die Nutzung der Applikation bezahlen, da ich einige Kosten decken muss. Ich habe jedoch versucht, die Kosten sehr gering zu halten.
-Hier ist eine Übersicht über die zwei Preis Optionen:
+Hier ist eine Übersicht über die zwei Preisoptionen:
 1. **Jährliches Abo**: 10 Fr. pro Jahr
 2. **Monatliches Abo**: 1.25 Fr. pro Monat (15 Fr. pro Jahr)
 
@@ -31,11 +28,11 @@ Diese Abonnemente werden über Stripe erstellt und verwaltet. Für die Einbindun
 ## Berechnungen & Durchschnitt
 Das Schema der Daten ist sehr ausgeklügelt und erlaubt es, sehr komplexe Durchschnitte zu berechnen, ohne die Applikation anzupassen.
 Das Schema ist grundsätzlich ein Baum von Gruppen und Fächern, wobei jedes Fach und jede Gruppe so konfiguriert werden kann, wie es gebraucht wird.
-Um dann die Durchschnitte zu ermitteln wird dieser Baum rekursiv durchlaufen, um die Durchschnitte von unten nach oben zu berechnen.
+Um dann die Durchschnitte zu ermitteln, wird dieser Baum rekursiv durchlaufen, um die Durchschnitte von unten nach oben zu berechnen.
 
 Diese Logik wurde so gewählt, da die Berechnung unseres Zeugnisses solche komplexen Muster aufzeigt *(z.B. Durchschnitt aller gerundeten Informatik-Noten zählt gerundet doppelt für die Promotionsnote)*
 
-Natürlich könnte man solche Berechnungen auch ganz einfach in der Applikation hart-codieren, jedoch wollte ich es aber so, dass ich für ein neues Semester nur die Konfiguration in der Datenbank hinzufügen muss und die Applikation kann direkt damit umgehen, egal wie komplex sie aufgebaut ist.
+Natürlich könnte man solche Berechnungen auch ganz einfach in der Applikation hart-codieren, jedoch wollte ich es so, dass ich für ein neues Semester nur die Konfiguration in der Datenbank hinzufügen muss und die Applikation kann direkt damit umgehen, egal wie komplex sie aufgebaut ist.
 
 Hier sind einige der möglichen Konfigurationen:
 - Gewicht der Gruppe oder des Faches
@@ -51,7 +48,7 @@ Für die Authentifizierung verwende ich Firebase Auth. Der Nutzer kann sich entw
 Für z.B. das Registrieren mit E-Mail und Passwort werden auch Verifizierungs-Mails verschickt, das passiert über einen Zoho-Mail Account und der Adresse noreply@fe.noten-rechner.ch
 
 ## Weitere Features:
-- Echtzeit Synchronisation der Daten (durch Firestore WebSockets)
+- Echtzeit-Synchronisation der Daten (durch Firestore WebSockets)
 - Benutzer können eigene Semester (Gruppen + Fächer) erstellen oder von mir fertige Semester auswählen
 - Benutzer können berechnen, welche Note sie in einer Prüfung brauchen, um eine bestimmte Note zu erreichen
 
