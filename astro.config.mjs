@@ -8,6 +8,8 @@ import icon from "astro-icon";
 export default defineConfig({
   output: "static",
   site: "https://luishutterli.ch",
+  // Slashless URLs everywhere; wrangler.jsonc serves them without a redirect (drop-trailing-slash)
+  trailingSlash: "never",
   compressHTML: true,
   fonts: [
     {

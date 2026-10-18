@@ -6,21 +6,23 @@ import type { ImageMetadata } from "astro";
 import fallbackImage from "../assets/projects/portfolio/portfolio-cover.png";
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
+import { SITE_DESCRIPTION, SITE_NAME, THEME_COLOR } from "../data/site";
 
 interface Props {
   title?: string;
   description?: string;
   image?: ImageMetadata;
+  noindex?: boolean;
 }
 
-const siteName = "Luis Hutterli";
 const {
   title,
-  description = "Luis Hutterli - Angehender Applikationsentwickler EFZ aus Kreuzlingen, Schweiz",
+  description = SITE_DESCRIPTION,
   image = fallbackImage,
+  noindex = false,
 } = Astro.props;
 
-const fullTitle = title ? `${title} | ${siteName}` : `${siteName} - Portfolio`;
+const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} - Portfolio`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImage = await getImage({ src: image, width: 1200, height: 630, format: "jpg" });
 const ogImageUrl = new URL(ogImage.src, Astro.site);
@@ -41,17 +43,17 @@ const ogImageUrl = new URL(ogImage.src, Astro.site);
     <link rel="manifest" href="/manifest.json" />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" href={canonicalUrl} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonicalUrl} />}
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content={THEME_COLOR} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={siteName} />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:locale" content="de_CH" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
+    {!noindex && <meta property="og:url" content={canonicalUrl} />}
     <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
 

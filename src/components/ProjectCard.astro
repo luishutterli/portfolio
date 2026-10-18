@@ -2,28 +2,19 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
-import { splitLinkTitle } from "../lib/projects";
+import { getShortName, splitLinkTitle } from "../lib/projects";
 
 interface Props {
   project: CollectionEntry<"projects">;
-  showImage?: boolean;
-  showFullDescription?: boolean;
-  headingLevel?: "h2" | "h3";
 }
 
-const {
-  project,
-  showImage = true,
-  showFullDescription = false,
-  headingLevel = "h3",
-} = Astro.props;
-const Heading = headingLevel;
-const shortName = project.data.name.split(" | ")[0];
+const { project } = Astro.props;
+const shortName = getShortName(project);
 const visibleTags = project.data.tags.slice(0, 4);
 const hiddenTagCount = project.data.tags.length - visibleTags.length;
 const MAX_DESCRIPTION = 200;
 const description =
-  !showFullDescription && project.data.description.length > MAX_DESCRIPTION
+  project.data.description.length > MAX_DESCRIPTION
     ? `${project.data.description.slice(0, MAX_DESCRIPTION).replace(/\s+\S*$/, "")}…`
     : project.data.description;
 const primaryLink = project.data.links[0] && {
@@ -35,7 +26,7 @@ const hasLinks = Boolean(project.data.github || primaryLink);
 
 <article class="group relative flex flex-col h-full">
   {
-    showImage && project.data.image && (
+    project.data.image && (
       <div class="bg-paper-2 mb-5 border border-line rounded-md aspect-video overflow-hidden">
         <Image
           src={project.data.image}
@@ -50,7 +41,7 @@ const hasLinks = Boolean(project.data.github || primaryLink);
     )
   }
   {
-    showImage && !project.data.image && (
+    !project.data.image && (
       <div
         class="flex items-end bg-paper-2 mb-5 p-5 border border-line rounded-md aspect-video overflow-hidden"
         aria-hidden="true"
@@ -63,7 +54,8 @@ const hasLinks = Boolean(project.data.github || primaryLink);
   }
 
   <div class="flex justify-between items-baseline gap-4">
-    <Heading class="font-semibold text-ink text-xl leading-snug tracking-tight">
+    {/* h2 because the only caller, /projects, renders cards directly under its h1 */}
+    <h2 class="font-semibold text-ink text-xl leading-snug tracking-tight">
       <a
         href={`/projects/${project.id}`}
         class="after:absolute after:inset-0 group-hover:text-accent transition-colors"
@@ -71,7 +63,7 @@ const hasLinks = Boolean(project.data.github || primaryLink);
       >
         {project.data.name}
       </a>
-    </Heading>
+    </h2>
     <span class="text-muted text-sm shrink-0">{project.data.state}</span>
   </div>
 

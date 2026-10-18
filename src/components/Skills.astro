@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import { skillGroups } from "../data/skills.ts";
+import { getShortName } from "../lib/projects";
 
 const projects = await getCollection("projects");
-const projectLabels = new Map(projects.map((p) => [p.id, p.data.name.split(" | ")[0]]));
+const projectLabels = new Map(projects.map((p) => [p.id, getShortName(p)]));
 
 for (const group of skillGroups) {
   for (const tech of group.technologies) {

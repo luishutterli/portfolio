@@ -18,7 +18,7 @@ Dieses Projekt ist meine persönliche Portfolio-Webseite, um meine Projekte und 
 ## Technische Details
 Die Webseite verwendet Astro als statischen Site-Generator, dadurch, dass so alle Seiten bereits fertige HTML-Dateien sind, kann die Seite extrem schnell geladen werden und muss nicht, wie beispielsweise bei React, erst gerendert werden. Auch ist das ein Vorteil für SEO, da die Seite direkt von Suchmaschinen indexiert werden kann.
 
-Durch das schnelle on-edge Hosting und Caching von Cloudflare und Cloudflare Pages wird die Seite extrem schnell, überall auf der Welt, bereitgestellt.
+Durch das schnelle on-edge Hosting und Caching von Cloudflare und Cloudflare Workers wird die Seite extrem schnell, überall auf der Welt, bereitgestellt.
 
 Diese Kombination aus statischer Generierung und on-edge Hosting sorgt für diese extrem gute Performance, wie sie hier zu sehen ist:
 ![Page Speed Insights Score](/images/portfolio/pagespeed-insights-score.png)

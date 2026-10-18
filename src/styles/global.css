@@ -12,6 +12,8 @@
   --color-paper-2: #f6f6f4;
   --color-accent: #1d4ed8;
   --color-accent-hover: #1e3a8a;
+
+  --spacing-nav: 4rem;
 }
 
 @layer base {
@@ -20,6 +22,8 @@
     background: var(--color-paper);
     scrollbar-color: #c3c8d1 var(--color-paper);
     caret-color: var(--color-accent);
+    /* keeps anchor targets clear of the sticky nav (h-nav + 1px border) */
+    scroll-padding-top: calc(var(--spacing-nav) + 1px);
   }
 
   main:focus {

@@ -23,6 +23,10 @@ export function formatDate(date: Date) {
   return date.toLocaleDateString("de-CH", { timeZone: "UTC" });
 }
 
+export function getShortName(project: CollectionEntry<"projects">) {
+  return project.data.name.split(" | ")[0];
+}
+
 export function splitLinkTitle(title: string) {
   const match = title.match(/^(.*?)\s*\((.+)\)$/);
   return match ? { label: match[1], note: match[2] } : { label: title, note: undefined };
