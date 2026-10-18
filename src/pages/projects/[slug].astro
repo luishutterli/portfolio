@@ -42,15 +42,15 @@ const hasLinks = Boolean(project.data.github || links.length > 0);
       Zurück zu allen Projekten
     </a>
 
-    <header class="gap-x-16 gap-y-10 grid lg:grid-cols-[minmax(0,1fr)_20rem] mt-8 lg:mt-12">
-      <div>
+    <div class="gap-x-16 gap-y-10 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_20rem] mt-8 lg:mt-12">
+      <header class="lg:col-start-1">
         <h1
-          class="font-semibold text-ink text-4xl lg:text-5xl tracking-tight text-balance"
+          class="font-semibold text-ink text-4xl lg:text-5xl tracking-tight text-balance break-words hyphens-auto"
           transition:name={`project-title-${project.id}`}
         >
           {project.data.name}
         </h1>
-        <p class="mt-5 max-w-[60ch] text-ink-soft text-xl leading-relaxed">
+        <p class="mt-5 max-w-[60ch] text-ink-soft text-xl break-words hyphens-auto leading-relaxed">
           {project.data.description}
         </p>
 
@@ -68,7 +68,7 @@ const hasLinks = Boolean(project.data.github || links.length > 0);
               </a>
             )}
             {links.map((link) => (
-              <span class="inline-flex flex-wrap items-baseline gap-x-2">
+              <span class="inline-flex flex-wrap items-baseline gap-x-2 max-w-full">
                 <a
                   href={link.url}
                   target="_blank"
@@ -78,14 +78,14 @@ const hasLinks = Boolean(project.data.github || links.length > 0);
                   {link.label}
                   <Icon name="lucide:arrow-up-right" class="w-4 h-4" />
                 </a>
-                {link.note && <span class="text-muted text-sm">{link.note}</span>}
+                {link.note && <span class="min-w-0 text-muted text-sm break-words">{link.note}</span>}
               </span>
             ))}
           </div>
         )}
-      </div>
+      </header>
 
-      <dl class="self-start border-ink border-t text-sm">
+      <dl class="lg:top-24 lg:sticky lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto self-start border-ink border-t text-sm break-words">
         <div class="py-3 border-line border-b">
           <dt class="text-muted">Status</dt>
           <dd class="mt-1 font-medium text-ink">{project.data.state}</dd>
@@ -103,15 +103,14 @@ const hasLinks = Boolean(project.data.github || links.length > 0);
           </div>
         )}
       </dl>
-    </header>
 
     {project.data.image && (
-      <div class="bg-paper-2 mx-auto mt-12 border border-line rounded-md max-w-4xl overflow-hidden">
+      <div class="lg:col-start-1 bg-paper-2 border border-line rounded-md overflow-hidden">
         <Image
           src={project.data.image}
           alt=""
           widths={[640, 896, 1280, 1792]}
-          sizes="(min-width: 944px) 896px, calc(100vw - 2rem)"
+          sizes="(min-width: 1280px) 720px, (min-width: 1024px) calc(100vw - 3rem - 24rem), calc(100vw - 2rem)"
           loading="eager"
           fetchpriority="high"
           class="w-full object-contain aspect-video"
@@ -122,11 +121,12 @@ const hasLinks = Boolean(project.data.github || links.length > 0);
 
     <div
       class:list={[
-        "mx-auto mt-14 max-w-[68ch] prose prose-slate prose-lg prose-a:text-accent prose-headings:tracking-tight prose-code:bg-paper-2 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none [&>h1:first-child]:hidden",
+        "lg:col-start-1 mt-4 max-w-[68ch] break-words proseprose-slate prose-lg prose-a:text-accent prose-headings:tracking-tight prose-code:bg-paper-2 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none [&>h1:first-child]:hidden",
         !project.data.image && "pt-10 border-line border-t",
       ]}
     >
       <Content />
+    </div>
     </div>
   </article>
 </Layout>

@@ -18,6 +18,7 @@ const {
   headingLevel = "h3",
 } = Astro.props;
 const Heading = headingLevel;
+const shortName = project.data.name.split(" | ")[0];
 const visibleTags = project.data.tags.slice(0, 4);
 const hiddenTagCount = project.data.tags.length - visibleTags.length;
 const MAX_DESCRIPTION = 200;
@@ -40,11 +41,23 @@ const hasLinks = Boolean(project.data.github || primaryLink);
           src={project.data.image}
           alt=""
           widths={[400, 800, 1200]}
-          sizes="(min-width: 1280px) 384px, (min-width: 768px) 50vw, 100vw"
+          sizes="(min-width: 1280px) 363px, (min-width: 1024px) calc((100vw - 7rem) / 3), (min-width: 768px) calc((100vw - 4rem) / 2), calc(100vw - 2rem)"
           loading="lazy"
           class="w-full h-full object-cover"
           transition:name={`project-image-${project.id}`}
         />
+      </div>
+    )
+  }
+  {
+    showImage && !project.data.image && (
+      <div
+        class="flex items-end bg-paper-2 mb-5 p-5 border border-line rounded-md aspect-video overflow-hidden"
+        aria-hidden="true"
+      >
+        <p class="font-semibold text-ink-soft text-2xl wrap-break-word text-balance leading-tight tracking-tight">
+          {shortName}
+        </p>
       </div>
     )
   }
@@ -53,13 +66,13 @@ const hasLinks = Boolean(project.data.github || primaryLink);
     <Heading class="font-semibold text-ink text-xl leading-snug tracking-tight">
       <a
         href={`/projects/${project.id}`}
-        class="group-hover:text-accent transition-colors after:absolute after:inset-0"
+        class="after:absolute after:inset-0 group-hover:text-accent transition-colors"
         transition:name={`project-title-${project.id}`}
       >
         {project.data.name}
       </a>
     </Heading>
-    <span class="shrink-0 text-muted text-sm">{project.data.state}</span>
+    <span class="text-muted text-sm shrink-0">{project.data.state}</span>
   </div>
 
   <p class="mt-2 text-ink-soft leading-relaxed">{description}</p>
