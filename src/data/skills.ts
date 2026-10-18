@@ -1,65 +1,70 @@
-export const skillsData = {
-  database: {
-    title: "Datenbanken",
-    icon: "M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4",
-    technologies: [
-      { name: "MySQL", level: 95, color: "from-slate-400 to-slate-500" },
-      { name: "Firebase", level: 90, color: "from-amber-300 to-orange-300" },
-      { name: "MongoDB", level: 75, color: "from-emerald-400 to-emerald-500" }
-    ]
-  },
-  backend: {
-    title: "Backend",
-    icon: "M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z",
-    technologies: [
-      { name: "Java", level: 100, color: "from-red-300 to-orange-300" },
-      { name: "REST APIs", level: 95, color: "from-indigo-400 to-purple-400" },
-      { name: "Node.js (Express.js / Hono ...)", level: 90, color: "from-green-300 to-green-400" }
-    ]
-  },
-  frontend: {
-    title: "Frontend",
-    icon: "M3 3h18v4H3V3zm0 6h18v8H3V9zm2 2h6v4H5v-4zm8 0h6v2h-6v-2zm0 3h4v1h-4v-1z",
-    technologies: [
-      { name: "React", level: 95, color: "from-blue-400 to-blue-500" },
-      { name: "HTML/CSS/JS", level: 95, color: "from-orange-300 to-red-300" },
-      { name: "TypeScript", level: 90, color: "from-blue-500 to-blue-600" }
-    ]
-  },
-  tools: {
-    title: "Tools & Platformen",
-    icon: "M12 15l-4-4h3V7h2v4h3l-4 4zm-8 4h16v2H4v-2z",
-    technologies: [
-      { name: "Linux", level: 95, color: "from-yellow-300 to-orange-300" },
-      { name: "Docker", level: 90, color: "from-blue-400 to-blue-500" },
-      { name: "Git", level: 90, color: "from-orange-300 to-red-300" }
-    ]
-  }
-};
+export interface Technology {
+  name: string;
+  usedIn: string[];
+}
 
-export const additionalTechnologies = [
-  { name: "Cloudflare", tooltip: "Hauptsächlich als DNS und DDOS-Schutz, aber auch als Hoster und Caching-Layer, verwendet in praktisch allen Projekten" },
-  { name: "TailwindCSS", tooltip: "Oft in Kombination mit React als Styling-Lösung" },
-  { name: "Firebase", tooltip: "Hoster und Datenbank (aber auch Authentifikation und anderes)" },
-  { name: "Figma", tooltip: "Für einfache Mockups" },
-  { name: "Google Cloud", tooltip: "Als Hoster (bsp. Für Docker-Container)" },
-  { name: "Digitalocean", tooltip: "VPS Hoster" },
-  { name: "Stripe", tooltip: "Einbindung für Abonements" },
-  { name: "Jupyter Notebook", tooltip: "Mit Python / Java" },
-  { name: "Maven", tooltip: "Für alle Java Projekte" },
-  { name: "Postman", tooltip: "Grundlegend um REST-APIs zu testen" },
-  { name: "Python", tooltip: "Sprache für POCs oder einfache Scripts" },
-  { name: "Astro", tooltip: "" },
-  { name: "PostgreSQL", tooltip: "" },
-  { name: "Wallee", tooltip: "Einbindung für ein Kunden" },
-  { name: "Rust", tooltip: "" },
-  { name: "Arduino", tooltip: "" },
-  { name: "C++", tooltip: "" },
-  { name: "Unity", tooltip: "" },
-  { name: "C#", tooltip: "" },
-  { name: "Flutter / Dart", tooltip: "" },
-  { name: "NVIDIA CUDA", tooltip: "Grafikkarten Programmierung" },
-  { name: "Tensorflow", tooltip: "" },
-  { name: "OpenCV", tooltip: "" },
-  { name: "PHP", tooltip: "" }
+export interface SkillGroup {
+  title: string;
+  technologies: Technology[];
+  other: string[];
+}
+
+export const skillGroups: SkillGroup[] = [
+  {
+    title: "Sprachen",
+    technologies: [
+      { name: "Java", usedIn: ["jukestack"] },
+      {
+        name: "TypeScript",
+        usedIn: ["starbridge", "swisscounts", "jukestack", "portfolio"],
+      },
+      { name: "JavaScript", usedIn: ["noten-rechner", "easy-rsa"] },
+      { name: "C++ (ESP-IDF)", usedIn: ["starbridge"] },
+    ],
+    other: ["Python", "C#", "Rust", "PHP", "Dart"],
+  },
+  {
+    title: "Backend & Daten",
+    technologies: [
+      { name: "Node.js (Express, Hono)", usedIn: ["starbridge", "swisscounts"] },
+      { name: "Cloudflare Workers & Durable Objects", usedIn: ["starbridge"] },
+      { name: "MySQL", usedIn: ["jukestack"] },
+      { name: "Firebase", usedIn: ["noten-rechner"] },
+      { name: "Stripe", usedIn: ["noten-rechner"] },
+    ],
+    other: ["PostgreSQL", "MongoDB", "REST APIs", "Wallee"],
+  },
+  {
+    title: "Frontend & Apps",
+    technologies: [
+      {
+        name: "React",
+        usedIn: ["swisscounts", "noten-rechner", "jukestack", "easy-rsa"],
+      },
+      { name: "React Native (Expo)", usedIn: ["starbridge"] },
+      { name: "Astro", usedIn: ["portfolio"] },
+      { name: "Tailwind CSS", usedIn: ["starbridge", "swisscounts", "noten-rechner"] },
+    ],
+    other: ["HTML / CSS", "Flutter", "Unity", "Figma"],
+  },
+  {
+    title: "Infrastruktur & Hardware",
+    technologies: [
+      { name: "Docker", usedIn: ["starbridge", "swisscounts", "jukestack"] },
+      { name: "Google Cloud, Cloudflare", usedIn: ["jukestack"] },
+      { name: "PCB-Design, CAN/OBD-II", usedIn: ["starbridge"] },
+    ],
+    other: [
+      "Linux",
+      "Git",
+      "Maven",
+      "Postman",
+      "DigitalOcean",
+      "Jupyter",
+      "Arduino",
+      "CUDA",
+      "TensorFlow",
+      "OpenCV",
+    ],
+  },
 ];

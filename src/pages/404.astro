@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+import { getSortedProjects } from "../lib/projects";
+
+const projects = (await getSortedProjects()).slice(0, 3);
+---
+
+<Layout title="Seite nicht gefunden" noindex>
+  <section class="mx-auto px-4 lg:px-6 pt-16 lg:pt-24 pb-20 max-w-6xl">
+    <p class="font-medium text-muted">404</p>
+    <h1 class="mt-2 font-semibold text-ink text-4xl lg:text-5xl tracking-tight">Diese Seite gibt es nicht.</h1>
+    <p class="mt-4 max-w-[52ch] text-ink-soft text-lg leading-relaxed">
+      Vielleicht wurde sie verschoben oder der Link ist falsch. Hier geht es weiter:
+    </p>
+
+    <ul class="mt-10 border-ink border-t max-w-xl">
+      {projects.map((project) => (
+        <li class="border-line border-b">
+          <a href={`/projects/${project.id}`} class="group flex justify-between items-center gap-6 py-4">
+            <span class="font-medium text-ink group-hover:text-accent transition-colors">{project.data.name}</span>
+            <Icon name="lucide:arrow-right" class="w-4 h-4 text-muted group-hover:text-accent transition-colors" />
+          </a>
+        </li>
+      ))}
+      <li class="border-line border-b">
+        <a href="/projects" class="group flex justify-between items-center gap-6 py-4">
+          <span class="font-medium text-ink group-hover:text-accent transition-colors">Alle Projekte</span>
+          <Icon name="lucide:arrow-right" class="w-4 h-4 text-muted group-hover:text-accent transition-colors" />
+        </a>
+      </li>
+      <li class="border-line border-b">
+        <a href="/" class="group flex justify-between items-center gap-6 py-4">
+          <span class="font-medium text-ink group-hover:text-accent transition-colors">Zur Startseite</span>
+          <Icon name="lucide:arrow-right" class="w-4 h-4 text-muted group-hover:text-accent transition-colors" />
+        </a>
+      </li>
+    </ul>
+  </section>
+</Layout>

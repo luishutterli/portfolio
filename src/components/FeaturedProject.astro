@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+const FEATURED_ID = "starbridge";
+
+const project = await getEntry("projects", FEATURED_ID);
+if (!project) throw new Error(`FeaturedProject: unknown project "${FEATURED_ID}"`);
+
+const href = `/projects/${project.id}`;
+---
+
+<section class="border-line border-b">
+  <div class="mx-auto px-4 lg:px-6 py-14 lg:py-20 max-w-6xl">
+    <article class="group relative items-center gap-x-12 lg:gap-x-16 gap-y-8 grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+      {
+        project.data.image && (
+          <div class="bg-paper-2 border border-line rounded-md aspect-video overflow-hidden">
+            <Image
+              src={project.data.image}
+              alt=""
+              widths={[640, 960, 1280, 1792]}
+              sizes="(min-width: 1280px) 630px, (min-width: 1024px) calc((100vw - 7rem) * 7 / 12), calc(100vw - 2rem)"
+              loading="eager"
+              class="w-full h-full object-cover"
+              transition:name={`project-image-${project.id}`}
+            />
+          </div>
+        )
+      }
+
+      <div>
+        <h2 class="font-semibold text-ink text-3xl lg:text-4xl tracking-tight text-balance">
+          <a
+            href={href}
+            class="group-hover:text-accent transition-colors after:absolute after:inset-0"
+            transition:name={`project-title-${project.id}`}
+          >
+            {project.data.name}
+          </a>
+        </h2>
+        <p class="mt-4 max-w-[52ch] text-ink-soft text-lg leading-relaxed">
+          {project.data.description}
+        </p>
+        <p class="mt-4 text-muted text-sm leading-relaxed">
+          {project.data.tags.slice(0, 5).join(" · ")}
+        </p>
+
+        <div class="z-10 relative flex flex-wrap items-center gap-x-6 gap-y-1 mt-6">
+          <a
+            href={href}
+            class="group/cta inline-flex items-center gap-2 bg-ink hover:bg-accent px-5 py-2.5 rounded-md font-medium text-paper transition-colors"
+          >
+            Projekt ansehen
+            <Icon name="lucide:arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-0.5" />
+          </a>
+          {project.data.github && (
+            <a
+              href={project.data.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 py-2.5 font-medium text-ink hover:text-accent transition-colors"
+            >
+              <Icon name="simple-icons:github" class="w-4 h-4" />
+              Code
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+
+    <a
+      href="/projects"
+      class="group/all inline-flex items-center gap-1.5 mt-12 py-1 font-medium text-accent hover:text-accent-hover underline-offset-4 hover:underline"
+    >
+      Alle Projekte ansehen
+      <Icon name="lucide:arrow-right" class="w-4 h-4 transition-transform group-hover/all:translate-x-0.5" />
+    </a>
+  </div>
+</section>
